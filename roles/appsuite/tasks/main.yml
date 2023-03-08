@@ -1,0 +1,32 @@
+---
+
+- name: Install OX AppSuite
+  ansible.builtin.import_tasks: install.yml
+  tags:
+    - "role::appsuite"
+    - "role::appsuite:install"
+
+- name: Initialize OX AppSuite
+  ansible.builtin.import_tasks: init.yml
+  tags:
+    - "never"
+    - "role::appsuite:init"
+
+- name: Configure OX AppSuite
+  ansible.builtin.import_tasks: config.yml
+  tags:
+    - "role::appsuite"
+    - "role::appsuite:config"
+-
+ name: Configure LDAP authplugin
+  ansible.builtin.import_tasks: ldap.yml
+  when: "appsuite_authplugin == open-xchange-authentication-ldap"
+  tags:
+    - "role::appsuite"
+    - "role::appsuite:ldap"
+
+- name: Configure OpenID Connect client
+  ansible.builtin.import_tasks: oidc.yml
+  tags:
+    - "role::appsuite"
+    - "role::appsuite:oidc"

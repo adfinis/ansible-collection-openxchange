@@ -1,0 +1,10 @@
+---
+
+- name: Render ldapauth.properties
+  ansible.builtin.template:
+    src: opt/open-xchange/etc/ldapauth.properties.j2
+    dest: /opt/open-xchange/etc/ldapauth.properties
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart open-xchange

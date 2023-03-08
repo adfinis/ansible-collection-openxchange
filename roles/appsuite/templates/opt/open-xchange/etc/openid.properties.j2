@@ -1,0 +1,29 @@
+{{ ansible_managed | comment }}
+
+com.openexchange.oidc.enabled={{ oidc_enabled | ternary('true', 'false') }}
+com.openexchange.oidc.startDefaultBackend={{ oidc_enabled | ternary('true', 'false') }}
+
+com.openexchange.oidc.opIssuer={{ oidc_issuer }}
+com.openexchange.oidc.clientId={{ oidc_client_id }}
+com.openexchange.oidc.clientSecret={{ oidc_client_secret }}
+com.openexchange.oidc.scope={{ oidc_scope }}
+com.openexchange.oidc.responseType={{ oidc_response_type }}
+
+com.openexchange.oidc.rpRedirectURIAuth={{ oidc_redirect_url }}
+com.openexchange.oidc.opAuthorizationEndpoint={{ oidc_authorization_endpoint }}
+com.openexchange.oidc.opTokenEndpoint={{ oidc_token_endpoint }}
+com.openexchange.oidc.opJwkSetEndpoint={{ oidc_jwkset_endpoint }}
+com.openexchange.oidc.opLogoutEndpoint={{ oidc_logout_endpoint }}
+com.openexchange.oidc.rpRedirectURILogout={{ oidc_logout_redirect_url }}
+com.openexchange.oidc.rpRedirectURIPostSSOLogout={{ oidc_redirect_post_sso_logout }}
+com.openexchange.oidc.ssoLogout={{ oidc_sso_logout | ternary('true', 'false') }}
+
+com.openexchange.oidc.enablePasswordGrant = {{ oidc_password_grant | ternary('true', 'false') }}
+com.openexchange.oidc.passwordGrantUserNamePart={{ oidc_password_grant_namepart }}
+
+com.openexchange.oidc.contextLookupClaim={{ oidc_context_lookup_claim }}
+com.openexchange.oidc.contextLookupNamePart={{ oidc_context_lookup_namepart }}
+com.openexchange.oidc.userLookupClaim={{ oidc_user_lookup_claim }}
+com.openexchange.oidc.userLookupNamePart={{ oidc_user_lookup_namepart }}
+
+{{ oidc_additional_config }}

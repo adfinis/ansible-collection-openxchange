@@ -1,0 +1,10 @@
+---
+
+- name: Render openid.properties
+  ansible.builtin.template:
+    src: opt/open-xchange/etc/openid.properties.j2
+    dest: /opt/open-xchange/etc/openid.properties
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart open-xchange

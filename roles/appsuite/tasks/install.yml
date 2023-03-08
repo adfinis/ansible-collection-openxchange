@@ -1,0 +1,81 @@
+---
+
+- name: Add apt repository key for Eclipse Temurin JRE 8
+  ansible.builtin.apt_key:
+    url: https://packages.adoptium.net/artifactory/api/gpg/key/public
+
+- name: Add apt repository for Eclipse Temurin JRE 8
+  ansible.builtin.apt_repository:
+    repo: "deb https://packages.adoptium.net/artifactory/deb/ {{ temurin_repository_release }} main"
+
+  # This is an ugly hack needed because the name of this 3rd party JRE package changed.
+  # This equivs package satisfies the dependency with the old name "adoptopenjdk-8-hotspot-jre"
+  # and depends on the package with the new name, "temurin-8-jdk".
+- name: Copy adoptopenjdk-8-hotspot-jre_1.0_all.deb to the target machine
+  ansible.builtin.copy:
+    src: adoptopenjdk-8-hotspot-jre_1.0_all.deb
+    dest: /root/adoptopenjdk-8-hotspot-jre_1.0_all.deb
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: "Install equivs package 'adoptopenjdk-8-hotspot-jre' that aliases the dependency to 'temurin-8-jdk'"
+  ansible.builtin.apt:
+    deb: /root/adoptopenjdk-8-hotspot-jre_1.0_all.deb
+
+- name: Add apt repository key for Open-Xchange
+  ansible.builtin.apt_key:
+    url: https://software.open-xchange.com/0xDFD4BCF6-oxbuildkey.pub
+
+- name: Add authentication data for Open-Xchange repositories to apt_auth
+  ansible.builtin.template:
+    src: etc/apt/auth.conf.d/apt_auth.conf.j2
+    dest: /etc/apt/auth.conf.d/software.open-xchange.com.conf
+    owner: root
+    group: root
+    mode: "0600"
+  vars:
+    machine: software.open-xchange.com
+    login: "{{ appsuite_repository_username }}"
+    password: "{{ appsuite_repository_password }}"
+  when:
+    - "appsuite_repository_username is not null"
+    - "appsuite_repository_password is not null"
+
+- name: Add apt repositories for Open-Xchange core components
+  ansible.builtin.apt_repository:
+    repo: "{{ item }}"
+  loop:
+    - "{{ appsuite_repository_backend }}"
+    - "{{ appsuite_repository_appsuiteui }}"
+
+- name: Add apt repositories for Open-Xchange core component updates
+  ansible.builtin.apt_repository:
+    repo: "{{ item }}"
+  when: "appsuite_repository_component_updates"
+  loop:
+    - "{{ appsuite_repository_backend_updates }}"
+    - "{{ appsuite_repository_appsuiteui_updates }}"
+
+- name: Install AppSuite packages
+  ansible.builtin.apt:
+    name:
+      - open-xchange
+      - open-xchange-grizzly
+      - open-xchange-admin
+      - open-xchange-appsuite
+      - open-xchange-appsuite-backend
+      - open-xchange-appsuite-manifest
+      - open-xchange-admin-soap-usercopy
+      - open-xchange-admin-user-copy
+      - open-xchange-meta-ui-appsuite
+      - "{{ appsuite_authplugin }}"
+
+- name: Add /opt/open-xchange/sbin to PATH
+  ansible.builtin.template:
+    src: etc/profile.d/open-xchange.sh.j2
+    dest: /etc/profile.d/open-xchange.sh
+    owner: root
+    group: root
+    mode: "0644"
+

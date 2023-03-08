@@ -1,0 +1,26 @@
+---
+
+- name: Render configdb.properties
+  ansible.builtin.template:
+    src: opt/open-xchange/etc/configdb.properties.j2
+    dest: /opt/open-xchange/etc/configdb.properties
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart open-xchange
+
+- name: Start and enable open-xchange
+  ansible.builtin.service:
+    name: open-xchange
+    state: started
+    enabled: true
+
+# TODO
+#- mail.properties
+#- ox-scriptconf.sh
+#- server.properties
+#- notification.properties
+#- hazelcast.properties
+#- sessiond.properties
+#- licensekeys.properties
+#- globaldb.yml

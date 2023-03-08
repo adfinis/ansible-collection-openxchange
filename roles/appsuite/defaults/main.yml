@@ -1,0 +1,147 @@
+---
+
+temurin_repository_release: "{{ ansible_facts.distribution_release }}"
+
+appsuite_version: "7.10.6"
+
+appsuite_repository_username: null
+appsuite_repository_password: null
+appsuite_repository_release: "Debian{{ ansible_facts.distribution_release[0] | upper }}{{ ansible_facts.distribution_release[1:] }}"
+
+appsuite_repository_backend: >-
+  deb https://software.open-xchange.com/products/appsuite/{{ appsuite_version }}/backend/{{ appsuite_repository_release }}/ /
+appsuite_repository_appsuiteui: >-
+  deb https://software.open-xchange.com/products/appsuite/{{ appsuite_version }}/appsuiteui/{{ appsuite_repository_release }}/ /
+
+appsuite_repository_backend_updates: >-
+  deb https://software.open-xchange.com/products/appsuite/{{ appsuite_version }}/backend/updates/{{ appsuite_repository_release }}/ /
+appsuite_repository_appsuiteui_updates: >-
+  deb https://software.open-xchange.com/products/appsuite/{{ appsuite_version }}/appsuiteui/updates/{{ appsuite_repository_release }}/ /
+appsuite_repository_component_updates: false  # requires OX AppSuite 7 subscription
+
+appsuite_authplugin: open-xchange-authentication-database
+
+
+# TODO: Move this to other roles
+appsuite_repository_components:
+  - backend
+  - appsuiteui
+  - mobilityconnector  # EAS, subscription
+  - usm
+  - documentconverter  # subscription
+  - readerengine  # subscription
+  - documentconverter-api
+  - owncloud-integration  # subscription
+  - mobile-api-facade
+  - pdftool
+  - spellcheck
+
+# Some components deviate from the core App Suite versioning
+appsuite_repository_components_versionmap:
+  "7.10.5":
+    mobile-api-facade: "1.12.2"
+  "7.10.6":
+    mobile-api-facade: "1.14.3"
+
+    
+
+
+
+appsuite_configdb_host: localhost
+appsuite_configdb_port: 3306
+appsuite_configdb_database: configdb
+appsuite_configdb_user: openexchange
+appsuite_configdb_root_user: root
+appsuite_configdb_createuser: yes
+
+appsuite_configdb_write_host: "{{ appsuite_configdb_host }}"
+appsuite_configdb_write_port: "{{ appsuite_configdb_port }}"
+appsuite_configdb_write_database: "{{ appsuite_configdb_database }}"
+appsuite_configdb_write_user: "{{ appsuite_configdb_user }}"
+appsuite_configdb_write_pass: "{{ appsuite_configdb_pass }}"
+appsuite_configdb_write_driver: "com.mysql.jdbc.Driver"
+appsuite_configdb_write_url: "jdbc:mysql://{{ appsuite_configdb_write_host }}:{{ appsuite_configdb_write_port }}/{{ appsuite_configdb_write_database }}"
+
+appsuite_configdb_read_host: "{{ appsuite_configdb_host }}"
+appsuite_configdb_read_port: "{{ appsuite_configdb_port }}"
+appsuite_configdb_read_database: "{{ appsuite_configdb_database }}"
+appsuite_configdb_read_user: "{{ appsuite_configdb_user }}"
+appsuite_configdb_read_pass: "{{ appsuite_configdb_pass }}"
+appsuite_configdb_read_driver: "com.mysql.jdbc.Driver"
+appsuite_configdb_read_url: "jdbc:mysql://{{ appsuite_configdb_read_host }}:{{ appsuite_configdb_read_port }}/{{ appsuite_configdb_read_database }}"
+
+appsuite_userdb_write_alias: "{{ appsuite_configdb_write_host }}"
+appsuite_userdb_write_host: "{{ appsuite_configdb_write_host }}"
+appsuite_userdb_write_port: "{{ appsuite_configdb_write_port }}"
+appsuite_userdb_write_database: "{{ appsuite_configdb_write_database }}"
+appsuite_userdb_write_user: "{{ appsuite_configdb_write_user }}"
+appsuite_userdb_write_pass: "{{ appsuite_configdb_write_pass }}"
+appsuite_userdb_write_driver: "{{ appsuite_configdb_write_driver }}"
+
+appsuite_userdb_read_alias: "{{ appsuite_configdb_read_host }}"
+appsuite_userdb_read_host: "{{ appsuite_configdb_read_host }}"
+appsuite_userdb_read_port: "{{ appsuite_configdb_read_port }}"
+appsuite_userdb_read_database: "{{ appsuite_configdb_read_database }}"
+appsuite_userdb_read_user: "{{ appsuite_configdb_read_user }}"
+appsuite_userdb_read_pass: "{{ appsuite_configdb_read_pass }}"
+appsuite_userdb_read_driver: "{{ appsuite_configdb_read_driver }}"
+
+
+Appsuite_global_imapserver: "{{ ansible_facts.hostname }}"
+appsuite_global_smtpserver: "{{ ansible_facts.hostname }}"
+appsuite_mail_login_source: login
+appsuite_mail_server_source: user
+appsuite_transport_server_source: user
+
+appsuite_clt_memory: 50  # command line tools
+
+appsuite_tmpdir_path: /var/spool/open-xchange/uploads
+
+appsuite_jkroute: APP1
+appsuite_cluster_name: "{{ ansible_facts.hostname }}"
+appsuite_object_link_hostname: "{{ ansible_facts.hostname }}"
+appsuite_extras_link: "http://{{ ansible_facts.hostname }}"
+appsuite_network_listener_host: localhost
+appsuite_ajp_bind_port: "*"
+
+appsuite_session_max: 0
+appsuite_session_lifetime: 3600000
+
+appsuite_license_key: null
+appsuite_master_user: oxadminmaster
+
+
+appsuite_filestore_path: file:///var/opt/filestore
+
+
+
+
+
+
+appsuite_ldap_url: ldap://localhost:389/dc=example,dc=com
+appsuite_ldap_authentication_type: simple
+appsuite_ldap_connect_timeout: 10000
+appsuite_ldap_read_timeout: 10000
+appsuite_ldap_use_full_login_info: false
+appsuite_ldap_uid_attr: uid
+appsuite_ldap_basedn: ou=Users,ou=OxObjects,dc=open-xchange,dc=com
+appsuite_ldap_return_field: ""
+appsuite_ldap_ads_bind: false
+appsuite_ldap_bindonly: true
+appsuite_ldap_scope: subtree
+appsuite_ldap_search_filter: "(objectclass=posixAccount)"
+appsuite_ldap_bind_dn: ""
+appsuite_ldap_bind_password: ""
+appsuite_ldap_referral: follow
+
+
+
+
+oidc_additional_config: ""
+oidc_enabled: false
+oidc_response_type: code
+oidc_password_grant: false
+oidc_password_grant_namepart: full
+oidc_context_lookup_namepart: full
+oidc_user_lookup_namepart: full
+oidc_user_lookup_claim: preferred_username

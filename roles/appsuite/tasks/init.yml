@@ -1,0 +1,146 @@
+---
+
+- name: Initialize configdb
+  run_once: true
+  ansible.builtin.command: >-
+    /opt/open-xchange/sbin/initconfigdb
+    --configdb-host {{ appsuite_configdb_host }}
+    --configdb-port {{ appsuite_configdb_port }}
+    --configdb-dbname {{ appsuite_configdb_database }}
+    --configdb-user {{ appsuite_configdb_user }}
+    --configdb-pass {{ appsuite_configdb_pass }}
+    {% if appsuite_configdb_createuser %}
+    -a
+    --mysql-root-user {{ appsuite_configdb_root_user }}
+    {% if appsuite_configdb_root_pass is not none %}
+    --mysql-root-passwd {{ appsuite_configdb_root_pass }}
+    {% endif %}
+    {% endif %}
+
+- name: Run the App Suite installer
+  run_once: true
+  ansible.builtin.command: >-
+    /opt/open-xchange/sbin/oxinstaller
+    --servername {{ appsuite_servername }}
+    --configdb-readhost {{ appsuite_configdb_read_host }}
+    --configdb-readport {{ appsuite_configdb_read_port }}
+    --configdb-writehost {{ appsuite_configdb_write_host }}
+    --configdb-writeport {{ appsuite_configdb_write_port }}
+    --configdb-user {{ appsuite_configdb_write_user }}
+    --configdb-pass {{ appsuite_configdb_write_pass }}
+    --imapserver {{ appsuite_global_imapserver }}
+    --smtpserver {{ appsuite_global_smtpserver }}
+    --mail-login-src {{ appsuite_mail_login_source }}
+    --mail-server-src {{ appsuite_mail_server_source }}
+    --transport-server-src {{ appsuite_transport_server_source }}
+    --servermemory {{ appsuite_jvm_memory }}
+    --clt-memory {{ appsuite_clt_memory }}
+    --tmpdir-path {{ appsuite_tmpdir_path }}
+    --jkroute {{ appsuite_jkroute }}
+    --object-link-hostname {{ appsuite_object_link_hostname }}
+    --extras-link {{ appsuite_extras_link }}
+    --maxSession {{ appsuite_session_max }}
+    --sessionDefLifeTime {{ appsuite_session_lifetime }}
+    --name-of-oxcluster {{ appsuite_cluster_name }}
+    --network-listener-host {{ appsuite_network_listener_host }}
+    --ajp-bind-port {{ appsuite_ajp_bind_port }}
+    {% if appsuite_license_key is none %}
+    --no-license
+    {% else %}
+    --add-license {{ appsuite_license_key }}
+    {% endif %}
+    --master-user {{ appsuite_master_user }}
+    --master-pass {{ appsuite_master_pass }}
+
+- name: Start open-xchange
+  run_once: true
+  ansible.builtin.service:
+    name: open-xchange
+    state: started
+
+- name: Register the cluster in configdb
+  run_once: true
+  ansible.builtin.command: >-
+    /opt/open-xchange/sbin/registerserver
+    --name {{ appsuite_servername }}
+    --adminuser {{ appsuite_master_user }}
+    --adminpass {{ appsuite_master_pass }}
+
+- name: Register the filestore in configdb
+  run_once: true
+  ansible.builtin.command: >-
+    /opt/open-xchange/sbin/registerfilestore
+    --storepath {{ appsuite_filestore_path }}
+    --adminuser {{ appsuite_master_user }}
+    --adminpass {{ appsuite_master_pass }}
+
+- name: Register the write user database in configdb
+  run_once: true
+  ansible.builtin.command: >-
+    /opt/open-xchange/sbin/registerdatabase
+    --adminuser {{ appsuite_master_user }}
+    --adminpass {{ appsuite_master_pass }}
+    --name {{ appsuite_userdb_write_alias }}
+    --hostname {{ appsuite_userdb_write_host }}
+    --dbdriver {{ appsuite_userdb_write_driver }}
+    --dbuser {{ appsuite_userdb_write_user }}
+    --dbpasswd {{ appsuite_userdb_write_pass }}
+    --master true
+  register: appsuite_register_init_write_userdb
+
+- name: Register the read user database in configdb
+  run_once: true
+  ansible.builtin.command: >-
+    /opt/open-xchange/sbin/registerdatabase
+    --adminuser {{ appsuite_master_user }}
+    --adminpass {{ appsuite_master_pass }}
+    --name {{ appsuite_userdb_read_alias }}
+    --hostname {{ appsuite_userdb_read_host }}
+    --dbdriver {{ appsuite_userdb_read_driver }}
+    --dbuser {{ appsuite_userdb_read_user }}
+    --dbpasswd {{ appsuite_userdb_read_pass }}
+    --master false
+    --masterid {{ masterid }}
+  vars:
+    # TODO: This looks really fragile, fetch the id from the database instead
+    masterid: "{{ appsuite_register_init_write_userdb.stdout.split(' ')[1] }}"
+
+- name: Register the userdb as cross-context write database in configdb
+  run_once: true
+  ansible.builtin.command: >-
+    /opt/open-xchange/sbin/registerdatabase
+    --adminuser {{ appsuite_master_user }}
+    --adminpass {{ appsuite_master_pass }}
+    --name oxglobal
+    --hostname {{ appsuite_userdb_write_host }}
+    --dbdriver {{ appsuite_userdb_write_driver }}
+    --dbuser {{ appsuite_userdb_write_user }}
+    --dbpasswd {{ appsuite_userdb_write_pass }}
+    --maxunit 0
+    --master true
+  register: appsuite_register_init_write_ccdb
+
+- name: Register the userdb as cross-context read database in configdb
+  run_once: true
+  ansible.builtin.command: >-
+    /opt/open-xchange/sbin/registerdatabase
+    --adminuser {{ appsuite_master_user }}
+    --adminpass {{ appsuite_master_pass }}
+    --name oxglobal_slave
+    --hostname {{ appsuite_userdb_read_host }}
+    --dbdriver {{ appsuite_userdb_read_driver }}
+    --dbuser {{ appsuite_userdb_read_user }}
+    --dbpasswd {{ appsuite_userdb_read_pass }}
+    --maxunit 0
+    --master false
+    --masterid {{ masterid }}
+  vars:
+    # TODO: This looks really fragile, add some sanity checks or proper parsing
+    masterid: "{{ appsuite_register_init_write_ccdb.stdout.split(' ')[1] }}"
+  
+
+- name: Stop open-xchange
+  run_once: true
+  ansible.builtin.service:
+    name: open-xchange
+    state: stopped
