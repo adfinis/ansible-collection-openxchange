@@ -1,0 +1,12 @@
+{{ ansible_managed | comment }}
+
+# Direct links for notifications are generated according to the following pattern.
+# [hostname] needs to be replaced with the hostname of your machine. This is done automatically by software on backend machines using the
+# hosts canonical host name.
+# [uiwebpath] is replaced with the value of com.openexchange.UIWebPath defined in server.properties.
+# [module], [object] and [folder] are replaced with the relevant IDs to generate the direct link.
+object_link={{ appsuite_object_link }}/#m=[module]&i=[object]&f=[folder]
+
+# This property defines which email address of a user is used as from header when this user triggers notification mails.
+# Possible values are: primaryMail or defaultSenderAddress
+com.openexchange.notification.fromSource=defaultSenderAddress

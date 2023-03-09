@@ -78,7 +78,7 @@ appsuite_userdb_write_user: "{{ appsuite_configdb_write_user }}"
 appsuite_userdb_write_pass: "{{ appsuite_configdb_write_pass }}"
 appsuite_userdb_write_driver: "{{ appsuite_configdb_write_driver }}"
 
-appsuite_userdb_read_alias: "{{ appsuite_configdb_read_host }}"
+appsuite_userdb_read_alias: "{{ appsuite_configdb_write_alias }}_slave"
 appsuite_userdb_read_host: "{{ appsuite_configdb_read_host }}"
 appsuite_userdb_read_port: "{{ appsuite_configdb_read_port }}"
 appsuite_userdb_read_database: "{{ appsuite_configdb_read_database }}"
@@ -87,24 +87,27 @@ appsuite_userdb_read_pass: "{{ appsuite_configdb_read_pass }}"
 appsuite_userdb_read_driver: "{{ appsuite_configdb_read_driver }}"
 
 
-Appsuite_global_imapserver: "{{ ansible_facts.hostname }}"
-appsuite_global_smtpserver: "{{ ansible_facts.hostname }}"
+appsuite_global_imapserver: "imap://{{ ansible_facts.hostname }}:143"
+appsuite_global_smtpserver: "smtp://{{ ansible_facts.hostname }}:25"
 appsuite_mail_login_source: login
 appsuite_mail_server_source: user
 appsuite_transport_server_source: user
 
+# By default, dedicate half of the available memory to JVM, but no more than 8G
+appsuite_jvm_memory: "{{ [8192, (ansible_facts.memory_mb.real.total / 2)] | min }}"
 appsuite_clt_memory: 50  # command line tools
 
 appsuite_tmpdir_path: /var/spool/open-xchange/uploads
 
 appsuite_jkroute: APP1
 appsuite_cluster_name: "{{ ansible_facts.hostname }}"
-appsuite_object_link_hostname: "{{ ansible_facts.hostname }}"
+appsuite_object_link: "http://{{ ansible_facts.hostname }}"
 appsuite_extras_link: "http://{{ ansible_facts.hostname }}"
 appsuite_network_listener_host: localhost
 appsuite_ajp_bind_port: "*"
 
 appsuite_session_max: 0
+appsuite_session_max_peruser: 100
 appsuite_session_lifetime: 3600000
 
 appsuite_license_key: null
@@ -114,7 +117,27 @@ appsuite_master_user: oxadminmaster
 appsuite_filestore_path: file:///var/opt/filestore
 
 
+appsuite_max_upload_size: 104857600
+appsuite_max_body_size: 104857600
+appsuite_image_transform_maxsize: 10485760
+appsuite_image_transform_maxres: 26824090
+appsuite_ratelimit_lenient_remote_addresses: []
+appsuite_known_proxies: []
 
+
+appsuite_hazelcast_network_join: empty
+appsuite_hazelcast_network_static_nodes: []
+appsuite_hazelcast_network_interfaces: [127.0.0.1]
+
+
+appsuite_mail_authtype: ""
+appsuite_transport_authtype: ""
+appsuite_mailfilter_server_source: user
+appsuite_mailfilter_credential_source: session
+appsuite_mailfilter_authtype: ""
+appsuite_mailfilter_redirect_whitelist: []
+appsuite_mailfilter_host: localhost
+appsuite_mailfilter_port: 4190
 
 
 

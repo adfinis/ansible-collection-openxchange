@@ -1,26 +1,54 @@
 ---
 
-- name: Render configdb.properties
+- name: Fetch the ccdb pool id from configdb
+  run_once: true
+  community.mysql.mysql_query:
+    login_host: "{{ appsuite_configdb_host }}"
+    login_port: "{{ appsuite_configdb_port }}"
+    login_user: "{{ appsuite_configdb_user }}"
+    login_password: "{{ appsuite_configdb_pass }}"
+    login_db: "{{ appsuite_configdb_database }}"
+    query: >-
+      SELECT db_pool_id
+      FROM db_pool
+      WHERE name = 'oxglobal'
+  # There should be exactly one such db_pool name, fail otherwise
+  failed_when: "appsuite_register_ccdb_query.query_result[0] | length != 1"
+  changed_when: false
+  register: appsuite_register_ccdb_query
+
+- name: Render globaldb.yml
   ansible.builtin.template:
-    src: opt/open-xchange/etc/configdb.properties.j2
-    dest: /opt/open-xchange/etc/configdb.properties
+    src: opt/open-xchange/etc/globaldb.yml.j2
+    dest: /opt/open-xchange/etc/globaldb.yml
+    owner: root
+    group: root
+    mode: 0644
+  vars:
+    ccdb_pool_id: "{{ appsuite_register_ccdb_query.query_result[0][0]['db_pool_id'] }}"
+  notify: restart open-xchange
+
+- name: Render properties files
+  ansible.builtin.template:
+    src: "opt/open-xchange/etc/{{ item }}.j2"
+    dest: "/opt/open-xchange/etc/{{ item }}"
     owner: root
     group: root
     mode: 0644
   notify: restart open-xchange
-
+  loop:
+    - configdb.properties
+    - ox-scriptconf.sh
+    - hazelcast.properties
+    - server.properties
+    - sessiond.properties
+    - notification.properties
+    - mail.properties
+    - mailfilter.properties
+    - licensekeys.properties
+  
 - name: Start and enable open-xchange
   ansible.builtin.service:
     name: open-xchange
     state: started
     enabled: true
-
-# TODO
-#- mail.properties
-#- ox-scriptconf.sh
-#- server.properties
-#- notification.properties
-#- hazelcast.properties
-#- sessiond.properties
-#- licensekeys.properties
-#- globaldb.yml

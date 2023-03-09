@@ -17,40 +17,8 @@
     {% endif %}
     {% endif %}
 
-- name: Run the App Suite installer
-  run_once: true
-  ansible.builtin.command: >-
-    /opt/open-xchange/sbin/oxinstaller
-    --servername {{ appsuite_servername }}
-    --configdb-readhost {{ appsuite_configdb_read_host }}
-    --configdb-readport {{ appsuite_configdb_read_port }}
-    --configdb-writehost {{ appsuite_configdb_write_host }}
-    --configdb-writeport {{ appsuite_configdb_write_port }}
-    --configdb-user {{ appsuite_configdb_write_user }}
-    --configdb-pass {{ appsuite_configdb_write_pass }}
-    --imapserver {{ appsuite_global_imapserver }}
-    --smtpserver {{ appsuite_global_smtpserver }}
-    --mail-login-src {{ appsuite_mail_login_source }}
-    --mail-server-src {{ appsuite_mail_server_source }}
-    --transport-server-src {{ appsuite_transport_server_source }}
-    --servermemory {{ appsuite_jvm_memory }}
-    --clt-memory {{ appsuite_clt_memory }}
-    --tmpdir-path {{ appsuite_tmpdir_path }}
-    --jkroute {{ appsuite_jkroute }}
-    --object-link-hostname {{ appsuite_object_link_hostname }}
-    --extras-link {{ appsuite_extras_link }}
-    --maxSession {{ appsuite_session_max }}
-    --sessionDefLifeTime {{ appsuite_session_lifetime }}
-    --name-of-oxcluster {{ appsuite_cluster_name }}
-    --network-listener-host {{ appsuite_network_listener_host }}
-    --ajp-bind-port {{ appsuite_ajp_bind_port }}
-    {% if appsuite_license_key is none %}
-    --no-license
-    {% else %}
-    --add-license {{ appsuite_license_key }}
-    {% endif %}
-    --master-user {{ appsuite_master_user }}
-    --master-pass {{ appsuite_master_pass }}
+- name: Run the App Suite installer on all nodes
+  ansible.builtin.import_tasks: oxinstaller.yml
 
 - name: Start open-xchange
   run_once: true
@@ -86,6 +54,24 @@
     --dbuser {{ appsuite_userdb_write_user }}
     --dbpasswd {{ appsuite_userdb_write_pass }}
     --master true
+
+- name: Fetch the write user database pool id from configdb
+  run_once: true
+  community.mysql.mysql_query:
+    login_host: "{{ appsuite_configdb_host }}"
+    login_port: "{{ appsuite_configdb_port }}"
+    login_user: "{{ appsuite_configdb_user }}"
+    login_password: "{{ appsuite_configdb_pass }}"
+    login_db: "{{ appsuite_configdb_database }}"
+    query: >-
+      SELECT db_pool_id
+      FROM db_pool
+      WHERE name = %s
+    positional_args:
+      - "{{ appsuite_userdb_write_alias }}"
+  # There should be exactly one such db_pool name, fail otherwise
+  failed_when: "appsuite_register_init_write_userdb.query_result[0] | length != 1"
+  changed_when: false
   register: appsuite_register_init_write_userdb
 
 - name: Register the read user database in configdb
@@ -103,7 +89,7 @@
     --masterid {{ masterid }}
   vars:
     # TODO: This looks really fragile, fetch the id from the database instead
-    masterid: "{{ appsuite_register_init_write_userdb.stdout.split(' ')[1] }}"
+    masterid: "{{ appsuite_register_init_write_userdb.query_result[0][0]['db_pool_id'] }}"
 
 - name: Register the userdb as cross-context write database in configdb
   run_once: true
@@ -118,6 +104,22 @@
     --dbpasswd {{ appsuite_userdb_write_pass }}
     --maxunit 0
     --master true
+
+- name: Fetch the ccdb pool id from configdb
+  run_once: true
+  community.mysql.mysql_query:
+    login_host: "{{ appsuite_configdb_host }}"
+    login_port: "{{ appsuite_configdb_port }}"
+    login_user: "{{ appsuite_configdb_user }}"
+    login_password: "{{ appsuite_configdb_pass }}"
+    login_db: "{{ appsuite_configdb_database }}"
+    query: >-
+      SELECT db_pool_id
+      FROM db_pool
+      WHERE name = 'oxglobal'
+  # There should be exactly one such db_pool name, fail otherwise
+  failed_when: "appsuite_register_init_write_ccdb.query_result[0] | length != 1"
+  changed_when: false
   register: appsuite_register_init_write_ccdb
 
 - name: Register the userdb as cross-context read database in configdb
@@ -136,7 +138,7 @@
     --masterid {{ masterid }}
   vars:
     # TODO: This looks really fragile, add some sanity checks or proper parsing
-    masterid: "{{ appsuite_register_init_write_ccdb.stdout.split(' ')[1] }}"
+    masterid: "{{ appsuite_register_init_write_ccdb.query_result[0][0]['db_pool_id'] }}"
   
 
 - name: Stop open-xchange

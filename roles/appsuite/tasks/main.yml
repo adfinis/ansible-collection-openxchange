@@ -12,6 +12,12 @@
     - "never"
     - "role::appsuite:init"
 
+- name: Setup OX AppSuite Middleware node with oxinstaller
+  ansible.builtin.import_tasks: oxinstaller.yml
+  tags:
+    - "never"
+    - "role::appsuite:oxinstaller"
+
 - name: Configure OX AppSuite
   ansible.builtin.import_tasks: config.yml
   tags:
