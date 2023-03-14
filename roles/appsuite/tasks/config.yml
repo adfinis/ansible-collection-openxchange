@@ -45,6 +45,7 @@
     - notification.properties
     - mail.properties
     - mailfilter.properties
+    - permissions.properties
     - licensekeys.properties
   
 - name: Start and enable open-xchange

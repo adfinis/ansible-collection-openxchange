@@ -1,0 +1,13 @@
+---
+
+- name: Install Open-Xchange Documentconverter
+  ansible.builtin.import_tasks: install.yml
+  tags:
+    - "role::documentconverter:install"
+    - "role::documentconverter"
+
+- name: Configure Open-Xchange Documentconverter
+  ansible.builtin.import_tasks: config.yml
+  tags:
+    - "role::documentconverter:config"
+    - "role::documentconverter"

@@ -28,12 +28,8 @@ appsuite_repository_components:
   - appsuiteui
   - mobilityconnector  # EAS, subscription
   - usm
-  - documentconverter  # subscription
-  - readerengine  # subscription
-  - documentconverter-api
   - owncloud-integration  # subscription
   - mobile-api-facade
-  - pdftool
   - spellcheck
 
 # Some components deviate from the core App Suite versioning
@@ -139,6 +135,8 @@ appsuite_mailfilter_redirect_whitelist: []
 appsuite_mailfilter_host: localhost
 appsuite_mailfilter_port: 4190
 
+
+appsuite_default_permissions: []
 
 
 appsuite_ldap_url: ldap://localhost:389/dc=example,dc=com

@@ -1,0 +1,11 @@
+---
+
+- name: restart open-xchange
+  ansible.builtin.service:
+    name: open-xchange
+    state: restarted
+
+- name: restart open-xchange-documentconverter-server
+  ansible.builtin.service:
+    name: open-xchange-documentconverter-server
+    state: restarted

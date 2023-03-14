@@ -1,0 +1,35 @@
+{{ ansible_managed | comment }}
+
+# Default permissions for all users
+permissions={{ appsuite_default_permissions.join(',')
+
+# Mark this installation as boring, i.e. disable an easter egg
+# com.openexchange.capability.boring=true
+
+# Signal if file store is available or not
+# Default is true
+com.openexchange.capability.filestore=true
+
+# The property "alone" signals that the user is the only user in associated context/tenant.
+# It disables certain collaborative features and that would therefore be useless in such a context/tenant.
+# Default is false
+com.openexchange.capability.alone=false
+
+# Mobile App general permission
+# Default is false
+com.openexchange.capability.mobile_mail_app=false
+
+# Allows users to create share links to share files or folders. Default is true.
+com.openexchange.capability.share_links=true
+
+# Allows users to share files or folder with guest users. Default is true.
+com.openexchange.capability.invite_guests=true
+
+# Enables/disables the archive functionalities that is to move on demand older mails from any selected folder to a special archive folder.
+# If disabled the server will reject to perform archive requests.
+#
+# Default is true
+com.openexchange.capability.archive_emails=true
+
+
+com.openexchange.capability.document_preview=true

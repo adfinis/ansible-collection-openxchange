@@ -1,0 +1,77 @@
+{{ ansible_managed | comment }}
+
+# documentconverter-client.properties
+
+### Remote document conversion
+################################################################################
+
+# Use a remote DocumentCconverter to do the actual document conversion.
+# Set this entry to the base URL of the remote host: http://host[:port]/documentconverterPath
+# Default value: http://localhost:8008/documentconverterws
+com.openexchange.documentconverter.client.remoteDocumentConverterUrl=http://localhost:8008/documentconverterws
+
+# The maximum size of document source files that are processed at all;
+# the processing of files larger than this value returns an error
+# Default value: 128
+com.openexchange.documentconverter.client.maxDocumentSourceFileSizeMB=128
+
+### Remote image transformation
+################################################################################
+
+# Use a remote ImageServer to do the actual image transformation.
+# Set this entry to the base URL of the remote host: http://host[:port]/documentconverterPath
+# Default value: n/a
+com.openexchange.documentconverter.client.remoteImageServerUrl =
+
+# The maximum size of image source files that are processed at all;
+# the processing of files larger than this value returns an error
+# Default value: 32
+com.openexchange.documentconverter.client.maxImageSourceFileSizeMB=32
+
+# The comma separated list of supported input file extensions.
+# If this list item is left empty, no suppport check of
+# the given input file extension is done.
+# The job return type in case of an error is implementation
+# and job dependant in this case.
+# If at least one file extension is set via this config
+# item, a check of the input file extension against the
+# the given file extensions of this list item is performed.
+# If this list item is not empty and the current input file
+# extension matches none of the white list entries, a
+# JobError.UNSUPPORTED error is returned after callig the
+# appropriate job execution method.
+# Default value: n/a
+com.openexchange.documentconverter.client.supportedTypes =
+
+### PDF extraction tool
+################################################################################
+
+# The directory, containing the PDF extraction tool
+# Default value: "/opt/open-xchange/sbin"
+com.openexchange.documentconverter.client.pdfextractor.installDir=/opt/open-xchange/sbin
+
+# The directory, containing the PDF extraction tool working directory.
+# If no dedicated working directory is specified here, the configured
+# UPLOAD_DIRECTORY is used as default.
+# Default value: n/a
+com.openexchange.documentconverter.client.pdfextractor.workDir =
+
+# The maximum size in MegaBytes of virtual memory that an extraction tool instance can allocate;
+# set to -1 for no upper limit of maximum virtual memory
+# Default value: 1024
+com.openexchange.documentconverter.client.pdfextractor.maxVMemMB=1024
+
+### DocumentConverter client
+################################################################################
+
+# The timeout in  seconds, after which stateful ConvertDocument Ajax requests
+# (e.g. convertDocumentAction?convert_action=beginConvert) are automatically finalized,
+# in order to cleanup resources, not needed anymore.
+# Each subsequent stateful Ajax request (e.g. convertDocumentAction?convert_action=getPage)
+# updates the timestamp for the appropriate resources, assigned to a stateful conversion
+# sequence.
+# In case no final convertDocumentAction?convert_action=endConvert request is made,
+# this call is made internally after the specified timeout;
+# set to 0 to disable the automated cleanup handling.
+# Default value: 900
+com.openexchange.documentconverter.client.autoCleanupTimeoutSeconds=900

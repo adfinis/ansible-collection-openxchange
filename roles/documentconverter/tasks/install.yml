@@ -1,0 +1,31 @@
+---
+
+- name: Add apt repositories for Open-Xchange Document Converter components
+  ansible.builtin.apt_repository:
+    repo: "{{ item }}"
+  loop:
+    - "{{ documentconverter_repository_server }}"
+    - "{{ documentconverter_repository_readerengine }}"
+    - "{{ documentconcerter_repository_api }}"
+    - "{{ documentconcerter_repository_pdftool }}"
+
+- name: Add apt repositories for Open-Xchange Document Converter component updates
+  ansible.builtin.apt_repository:
+    repo: "{{ item }}"
+  when: "documentconverter_repository_component_updates"
+  loop:
+    - "{{ documentconverter_repository_server_updates }}"
+    - "{{ documentconverter_repository_readerengine_updates }}"
+    - "{{ documentconverter_repository_api_updates }}"
+    - "{{ documentconverter_repository_pdftool_updates }}"
+
+- name: Install Document Converter packages
+  ansible.builtin.apt:
+    name:
+      - open-xchange-documentconverter-api
+      - open-xchange-documentconverter-server
+      - open-xchange-documentconverter-client
+      - readerengine
+    notify:
+      - restart open-xchange
+      - restart open-xchange-documentconverter-server

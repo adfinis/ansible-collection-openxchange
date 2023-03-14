@@ -1,0 +1,20 @@
+---
+
+- name: Render properties files
+  ansible.builtin.template:
+    src: "opt/open-xchange/etc/{{ item }}.j2"
+    dest: "/opt/open-xchange/etc/{{ item }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart open-xchange
+    - restart open-xchange-documentconverter-server
+  loop:
+    - documentconverter-client.properties
+
+- name: Start and enable documentconverter server
+  ansible.builtin.service:
+    name: open-xchange-documentconverter-server
+    state: started
+    enabled: true

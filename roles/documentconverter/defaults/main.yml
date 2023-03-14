@@ -1,0 +1,23 @@
+---
+
+appsuite_version: "7.10.6"
+appsuite_repository_release: "Debian{{ ansible_facts.distribution_release[0] | upper }}{{ ansible_facts.distribution_release[1:] }}"
+
+documentconverter_repository_server: >-
+  deb https://software.open-xchange.com/products/appsuite/{{ appsuite_version }}/documentconverter/{{ appsuite_repository_release }}/ /
+documentconverter_repository_readerengine: >-
+  deb https://software.open-xchange.com/products/appsuite/{{ appsuite_version }}/readerengine/{{ appsuite_repository_release }}/ /
+documentconcerter_repository_api: >-
+  deb https://software.open-xchange.com/products/appsuite/{{ appsuite_version }}/documentconverter-api/{{ appsuite_repository_release }}/ /
+documentconcerter_repository_pdftool: >-
+  deb https://software.open-xchange.com/products/appsuite/{{ appsuite_version }}/pdftool/{{ appsuite_repository_release }}/ /
+
+documentconverter_repository_server_updates: >-
+  deb https://software.open-xchange.com/products/appsuite/{{ appsuite_version }}/documentconverter/updates/{{ appsuite_repository_release }}/ /
+documentconverter_repository_server_updates: >-
+  deb https://software.open-xchange.com/products/appsuite/{{ appsuite_version }}/readerengine/updates/{{ appsuite_repository_release }}/ /
+documentconverter_repository_api_updates: >-
+  deb https://software.open-xchange.com/products/appsuite/{{ appsuite_version }}/documentconverter-api/updates/{{ appsuite_repository_release }}/ /
+documentconverter_repository_pdftool_updates: >-
+  deb https://software.open-xchange.com/products/appsuite/{{ appsuite_version }}/pdftool/updates/{{ appsuite_repository_release }}/ /
+documentconverter_repository_component_updates: false  # requires OX AppSuite 7 subscription
