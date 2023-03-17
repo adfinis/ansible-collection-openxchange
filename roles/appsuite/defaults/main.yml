@@ -19,24 +19,7 @@ appsuite_repository_appsuiteui_updates: >-
   deb https://software.open-xchange.com/products/appsuite/{{ appsuite_version }}/appsuiteui/updates/{{ appsuite_repository_release }}/ /
 appsuite_repository_component_updates: false  # requires OX AppSuite 7 subscription
 
-appsuite_authplugin: open-xchange-authentication-database
-
-
-# TODO: Move this to other roles
-appsuite_repository_components:
-  - mobilityconnector  # EAS, subscription
-  - usm
-  - mobile-api-facade
-  - spellcheck
-
-# Some components deviate from the core App Suite versioning
-appsuite_repository_components_versionmap:
-  "7.10.5":
-    mobile-api-facade: "1.12.2"
-  "7.10.6":
-    mobile-api-facade: "1.14.3"
-
-    
+appsuite_authplugin: open-xchange-authentication-database 
 
 
 
@@ -116,7 +99,9 @@ appsuite_image_transform_maxsize: 10485760
 appsuite_image_transform_maxres: 26824090
 appsuite_ratelimit_lenient_remote_addresses: []
 appsuite_known_proxies: []
-
+appsuite_noipcheck:
+  - "127.0.0.1-127.255.255.255"
+  - "::1-0:0:0:0:0:0:7fff:ffff"
 
 appsuite_hazelcast_network_join: empty
 appsuite_hazelcast_network_static_nodes: []

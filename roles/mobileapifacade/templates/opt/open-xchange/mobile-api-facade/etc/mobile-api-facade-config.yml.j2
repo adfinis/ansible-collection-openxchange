@@ -1,0 +1,14 @@
+{{ ansible_managed | comment }}
+# The YAML configuration file for the Mobile API Facade
+#
+# This file contains host specific settings. Hosts are defined by the value of the X-Host header in an HTTP request.
+# If the X-Host header is not present, the Host header will be used.
+#
+#<Host header value>:
+#   <property name>: <property value>
+#
+#appsuite.example.com:
+#    com.openexchange.mobile.api.facade.threading: threadReferences
+#    com.openexchange.mobile.api.facade.numMailsPerFolder: 10000
+#    com.openexchange.mobile.api.facade.mailTeasers: true
+#    com.openexchange.mobile.api.facade.mailTeasers.defaultLength: 300

@@ -1,0 +1,39 @@
+---
+
+- name: Render properties files
+  ansible.builtin.template:
+    src: "opt/open-xchange/mobile-api-facade/etc/{{ item }}.j2"
+    dest: "/opt/open-xchange/mobile-api-facade/etc/{{ item }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart open-xchange-mobile-api-facade
+  loop:
+    - facade.properties
+    - mobile-api-facade-config.yml
+
+- name: Start and enable the Mobile API Facade server
+  ansible.builtin.service:
+    name: open-xchange-mobile-api-facade
+    state: started
+    enabled: true
+
+- name: Render apache2 configuration snippet
+  ansible.builtin.template:
+    src: etc/apache2/conf-available/open-xchange-mobile-api-facade.conf.j2
+    dest: /etc/apache2/conf-available/open-xchange-mobile-api-facade.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: reload apache2
+
+- name: Enable apache2 configuration snippet
+  ansible.builtin.file:
+    path: /etc/apache2/conf-enabled/open-xchange-mobile-api-facade.conf
+    src: /etc/apache2/conf-available/open-xchange-mobile-api-facade.conf
+    state: link
+    owner: root
+    group: root
+    mode: 0644
+  notify: reload apache2

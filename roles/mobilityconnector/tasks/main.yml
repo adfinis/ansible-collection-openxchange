@@ -1,0 +1,13 @@
+---
+
+- name: Install Open-Xchange Mobility Connector
+  ansible.builtin.import_tasks: install.yml
+  tags:
+    - "role::mobilityconnector:install"
+    - "role::mobilityconnector"
+
+- name: Configure Open-Xchange Mobility Connector
+  ansible.builtin.import_tasks: config.yml
+  tags:
+    - "role::mobilityconnector:config"
+    - "role::mobilityconnector"

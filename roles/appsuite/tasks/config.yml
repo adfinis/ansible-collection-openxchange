@@ -42,6 +42,7 @@
     - hazelcast.properties
     - server.properties
     - sessiond.properties
+    - noipcheck.cnf
     - notification.properties
     - mail.properties
     - mailfilter.properties

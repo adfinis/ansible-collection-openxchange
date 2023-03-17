@@ -1,0 +1,13 @@
+---
+
+- name: Install Open-Xchange Mobile API Facade
+  ansible.builtin.import_tasks: install.yml
+  tags:
+    - "role::mobileapifacade:install"
+    - "role::mobileapifacade"
+
+- name: Configure Open-Xchange Mobile API Facade
+  ansible.builtin.import_tasks: config.yml
+  tags:
+    - "role::mobileapifacade:config"
+    - "role::mobileapifacade"

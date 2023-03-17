@@ -1,0 +1,23 @@
+---
+
+- name: Add apt repositories for Open-Xchange Mobility Connector components
+  ansible.builtin.apt_repository:
+    repo: "{{ item }}"
+  loop:
+    - "{{ mobilityconnector_repository_usm }}"
+    - "{{ mobilityconnector_repository_connector }}"
+
+- name: Add apt repositories for Open-Xchange Mobility Connector component updates
+  ansible.builtin.apt_repository:
+    repo: "{{ item }}"
+  when: "mobilityconnector_repository_component_updates"
+  loop:
+    - "{{ mobilityconnector_repository_usm_updates }}"
+
+- name: Install Mobility Connector packages
+  ansible.builtin.apt:
+    name:
+      - open-xchange-meta-mobility
+  notify:
+    - restart open-xchange
+    - restart apache2

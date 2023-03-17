@@ -1,0 +1,9 @@
+{{ ansible_managed | comment }}
+# Facade Properties
+# This file is used to configure the mobile API facade.
+
+# The MiddlewareBaseUrl should point to the used middleware. This variable should only contain the host and
+# additionally the port if needed. If not configured the mobile API facade will not start correctly.
+#
+# Example: com.openexchange.mobile.api.facade.MiddlewareBaseUrl=https://appsuite.example.org/appsuite/api/
+com.openexchange.mobile.api.facade.MiddlewareBaseUrl={{ mobileapifacade_middleware_base_url }}

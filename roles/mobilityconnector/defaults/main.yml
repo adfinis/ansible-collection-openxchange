@@ -1,0 +1,17 @@
+---
+
+appsuite_version: "7.10.6"
+appsuite_repository_release: "Debian{{ ansible_facts.distribution_release[0] | upper }}{{ ansible_facts.distribution_release[1:] }}"
+
+mobilityconnector_repository_usm: >-
+  deb https://software.open-xchange.com/products/appsuite/{{ appsuite_version }}/usm/{{ appsuite_repository_release }}/ /
+mobilityconnector_repository_connector: >-
+  deb https://software.open-xchange.com/products/appsuite/{{ appsuite_version }}/mobilityconnector/{{ appsuite_repository_release }}/ /
+
+mobilityconnector_repository_usm_updates: >-
+  deb https://software.open-xchange.com/products/appsuite/{{ appsuite_version }}/usm/updates/{{ appsuite_repository_release }}/ /
+mobilityconnector_repository_component_updates: false  # requires subscription
+
+
+mobilityconnector_eas_mail_time_limit: 3
+mobilityconnector_eas_sync_all_folders: email

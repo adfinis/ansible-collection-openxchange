@@ -68,7 +68,9 @@
       - open-xchange-appsuite-manifest
       - open-xchange-admin-soap-usercopy
       - open-xchange-admin-user-copy
+      - open-xchange-dav
       - open-xchange-meta-ui-appsuite
+      - open-xchange-sessionstorage-hazelcast
       - "{{ appsuite_authplugin }}"
 
 - name: Add /opt/open-xchange/sbin to PATH

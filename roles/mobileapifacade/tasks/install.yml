@@ -1,0 +1,14 @@
+---
+
+- name: Add apt repositories for Open-Xchange Mobile API Facade components
+  ansible.builtin.apt_repository:
+    repo: "{{ item }}"
+  loop:
+    - "{{ mobileapifacade_repository_facade }}"
+
+- name: Install Mobile API Facade packages
+  ansible.builtin.apt:
+    name:
+      - open-xchange-mobile-api-facade
+  notify:
+    - restart open-xchange
