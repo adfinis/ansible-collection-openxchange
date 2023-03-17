@@ -1,0 +1,13 @@
+---
+
+- name: Install Open-Xchange OwnCloud Integration
+  ansible.builtin.import_tasks: install.yml
+  tags:
+    - "role::owncloud:install"
+    - "role::owncloud"
+
+- name: Configure Open-Xchange OwnCloud Integration
+  ansible.builtin.import_tasks: config.yml
+  tags:
+    - "role::owncloud:config"
+    - "role::owncloud"

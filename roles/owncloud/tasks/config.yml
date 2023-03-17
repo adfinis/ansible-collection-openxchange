@@ -1,0 +1,14 @@
+---
+
+- name: Render properties files
+  ansible.builtin.template:
+    src: "opt/open-xchange/etc/{{ item }}.j2"
+    dest: "/opt/open-xchange/etc/{{ item }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart open-xchange
+  loop:
+    - owncloud_oauth.properties
+    - settings/owncloud-filepicker.properties

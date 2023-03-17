@@ -1,0 +1,11 @@
+{{ ansible_managed | comment }}
+
+# Custom URL for the ownCloud server.
+# Defaults to /owncloud/ on the same domain as OX App Suite.
+#
+io.ox.owncloud//server={{ owncloud_filepicker_base_url }}
+
+# Custom URL for the ownCloud Files app.
+# Defaults to apps/files/ relative to the value of io.ox.owncloud//server.
+#
+io.ox.owncloud//appUrl={{ owncloud_filepicker_files_url }}

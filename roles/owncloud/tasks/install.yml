@@ -1,0 +1,17 @@
+---
+
+- name: Add apt repositories for Open-Xchange OwnCloud Integration components
+  ansible.builtin.apt_repository:
+    repo: "{{ item }}"
+  loop:
+    - "{{ owncloud_repository_integration }}"
+
+- name: Install OwnCloud Integration packages
+  ansible.builtin.apt:
+    name:
+      - open-xchange-appsuite-owncloud-filepicker
+      - open-xchange-appsuite-owncloud-filepicker-static
+      - open-xchange-owncloud-filepicker
+      - open-xchange-owncloud-oauth-session
+  notify:
+    - restart open-xchange

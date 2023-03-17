@@ -24,11 +24,8 @@ appsuite_authplugin: open-xchange-authentication-database
 
 # TODO: Move this to other roles
 appsuite_repository_components:
-  - backend
-  - appsuiteui
   - mobilityconnector  # EAS, subscription
   - usm
-  - owncloud-integration  # subscription
   - mobile-api-facade
   - spellcheck
 

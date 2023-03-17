@@ -1,0 +1,11 @@
+---
+
+appsuite_version: "7.10.6"
+appsuite_repository_release: "Debian{{ ansible_facts.distribution_release[0] | upper }}{{ ansible_facts.distribution_release[1:] }}"
+
+owncloud_repository_integration: >-
+  deb https://software.open-xchange.com/products/appsuite/{{ appsuite_version }}/owncloud-integration/{{ appsuite_repository_release }}/ /
+
+owncloud_display_name: ownCloud
+owncloud_capability_filestorage_oauth: true
+owncloud_capability_filestorage: true
