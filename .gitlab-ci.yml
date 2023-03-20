@@ -13,9 +13,11 @@ include:
 
 yamllint:
   extends: .templates.lint.yamllint
+  rules: []
 
 ansible-lint:
   extends: .templates.lint.ansible-lint
+  rules: []
   script:
     - chmod 0755 .
     - ansible-lint --version
