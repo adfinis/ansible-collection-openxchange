@@ -23,8 +23,8 @@
   tags:
     - "role::appsuite"
     - "role::appsuite:config"
--
- name: Configure LDAP authplugin
+
+- name: Configure LDAP authplugin
   ansible.builtin.import_tasks: ldap.yml
   when: "appsuite_authplugin == open-xchange-authentication-ldap"
   tags:

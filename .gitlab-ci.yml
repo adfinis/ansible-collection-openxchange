@@ -1,0 +1,22 @@
+---
+
+stages:
+  - lint
+
+include:
+  - project: 'ad-sy/ci-templates'
+    ref: main
+    file: '/templates/lint/ansible-lint.yml'
+  - project: 'ad-sy/ci-templates'
+    ref: main
+    file: '/templates/lint/yamllint.yml'
+
+yamllint:
+  extends: .templates.lint.yamllint
+
+ansible-lint:
+  extends: .templates.lint.ansible-lint
+  script:
+    - chmod 0755 .
+    - ansible-lint --version
+    - ansible-lint

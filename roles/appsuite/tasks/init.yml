@@ -16,6 +16,7 @@
     --mysql-root-passwd {{ appsuite_configdb_root_pass }}
     {% endif %}
     {% endif %}
+  changed_when: true
 
 - name: Run the App Suite installer on all nodes
   ansible.builtin.import_tasks: oxinstaller.yml
@@ -33,6 +34,7 @@
     --name {{ appsuite_servername }}
     --adminuser {{ appsuite_master_user }}
     --adminpass {{ appsuite_master_pass }}
+  changed_when: true
 
 - name: Register the filestore in configdb
   run_once: true
@@ -41,6 +43,7 @@
     --storepath {{ appsuite_filestore_path }}
     --adminuser {{ appsuite_master_user }}
     --adminpass {{ appsuite_master_pass }}
+  changed_when: true
 
 - name: Register the write user database in configdb
   run_once: true
@@ -54,6 +57,7 @@
     --dbuser {{ appsuite_userdb_write_user }}
     --dbpasswd {{ appsuite_userdb_write_pass }}
     --master true
+  changed_when: true
 
 - name: Fetch the write user database pool id from configdb
   run_once: true
@@ -87,6 +91,7 @@
     --dbpasswd {{ appsuite_userdb_read_pass }}
     --master false
     --masterid {{ masterid }}
+  changed_when: true
   vars:
     # TODO: This looks really fragile, fetch the id from the database instead
     masterid: "{{ appsuite_register_init_write_userdb.query_result[0][0]['db_pool_id'] }}"
@@ -104,6 +109,7 @@
     --dbpasswd {{ appsuite_userdb_write_pass }}
     --maxunit 0
     --master true
+  changed_when: true
 
 - name: Fetch the ccdb pool id from configdb
   run_once: true
@@ -136,10 +142,10 @@
     --maxunit 0
     --master false
     --masterid {{ masterid }}
+  changed_when: true
   vars:
     # TODO: This looks really fragile, add some sanity checks or proper parsing
     masterid: "{{ appsuite_register_init_write_ccdb.query_result[0][0]['db_pool_id'] }}"
-  
 
 - name: Stop open-xchange
   run_once: true

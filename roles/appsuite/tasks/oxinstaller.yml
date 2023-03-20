@@ -33,3 +33,4 @@
     {% endif %}
     --master-user {{ appsuite_master_user }}
     --master-pass {{ appsuite_master_pass }}
+  changed_when: true

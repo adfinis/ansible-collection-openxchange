@@ -6,7 +6,7 @@
     dest: "/opt/open-xchange/etc/{{ item }}"
     owner: root
     group: root
-    mode: 0644
+    mode: "0644"
   notify:
     - restart open-xchange
   loop:

@@ -19,8 +19,7 @@ appsuite_repository_appsuiteui_updates: >-
   deb https://software.open-xchange.com/products/appsuite/{{ appsuite_version }}/appsuiteui/updates/{{ appsuite_repository_release }}/ /
 appsuite_repository_component_updates: false  # requires OX AppSuite 7 subscription
 
-appsuite_authplugin: open-xchange-authentication-database 
-
+appsuite_authplugin: open-xchange-authentication-database
 
 
 appsuite_configdb_host: localhost
@@ -28,7 +27,7 @@ appsuite_configdb_port: 3306
 appsuite_configdb_database: configdb
 appsuite_configdb_user: openexchange
 appsuite_configdb_root_user: root
-appsuite_configdb_createuser: yes
+appsuite_configdb_createuser: true
 
 appsuite_configdb_write_host: "{{ appsuite_configdb_host }}"
 appsuite_configdb_write_port: "{{ appsuite_configdb_port }}"
@@ -136,8 +135,6 @@ appsuite_ldap_search_filter: "(objectclass=posixAccount)"
 appsuite_ldap_bind_dn: ""
 appsuite_ldap_bind_password: ""
 appsuite_ldap_referral: follow
-
-
 
 
 oidc_additional_config: ""

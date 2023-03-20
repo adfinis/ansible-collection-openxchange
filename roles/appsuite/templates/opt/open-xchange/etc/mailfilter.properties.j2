@@ -79,7 +79,7 @@ com.openexchange.mail.filter.punycode=false
 com.openexchange.mail.filter.useSIEVEResponseCodes=false
 
 # Specify a comma-separated list of domains (wild-card syntax supported) that are allowed for redirect rules
-com.openexchange.mail.filter.redirectWhitelist={{ appsuite_mailfilter_redirect_whitelist.join(',') }}
+com.openexchange.mail.filter.redirectWhitelist={{ appsuite_mailfilter_redirect_whitelist | join(',') }}
 
 # Specifies the preferred SASL authentication mechanism.
 # An empty value falls-back to "PLAIN"

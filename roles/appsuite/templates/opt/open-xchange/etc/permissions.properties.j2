@@ -1,7 +1,7 @@
 {{ ansible_managed | comment }}
 
 # Default permissions for all users
-permissions={{ appsuite_default_permissions.join(',')
+permissions={{ appsuite_default_permissions | join(',') }}
 
 # Mark this installation as boring, i.e. disable an easter egg
 # com.openexchange.capability.boring=true

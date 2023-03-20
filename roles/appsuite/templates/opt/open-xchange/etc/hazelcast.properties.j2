@@ -59,7 +59,7 @@ com.openexchange.hazelcast.network.join={{ appsuite_hazelcast_network_join }}
 # It doesn't hurt if the address of the local host appears in the list, so
 # that it's still possible to use the same list throughout all nodes in the
 # cluster.
-com.openexchange.hazelcast.network.join.static.nodes={{ appsuite_hazelcast_network_static_nodes.join(',') }}
+com.openexchange.hazelcast.network.join.static.nodes={{ appsuite_hazelcast_network_static_nodes | join(',') }}
 
 # Specified one or more domain names, which are resolved to a superset of IP
 # addresses.
@@ -99,7 +99,7 @@ com.openexchange.hazelcast.merge.runDelay=120s
 # recommended to specify the IP-address of the network interface to bind to
 # explicitly. Defaults to "127.0.0.1" (local loopback only), needs to be
 # adjusted when building a cluster of multiple backend nodes.
-com.openexchange.hazelcast.network.interfaces={{ appsuite_hazelcast_network_interfaces.join(',') }}
+com.openexchange.hazelcast.network.interfaces={{ appsuite_hazelcast_network_interfaces | join(',') }}
 
 # The port Hazelcast will listen for incoming connections. Defaults to "5701".
 com.openexchange.hazelcast.network.port=5701

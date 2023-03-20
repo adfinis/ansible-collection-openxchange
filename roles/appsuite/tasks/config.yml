@@ -23,7 +23,7 @@
     dest: /opt/open-xchange/etc/globaldb.yml
     owner: root
     group: root
-    mode: 0644
+    mode: "0644"
   vars:
     ccdb_pool_id: "{{ appsuite_register_ccdb_query.query_result[0][0]['db_pool_id'] }}"
   notify: restart open-xchange
@@ -34,7 +34,7 @@
     dest: "/opt/open-xchange/etc/{{ item }}"
     owner: root
     group: root
-    mode: 0644
+    mode: "0644"
   notify: restart open-xchange
   loop:
     - configdb.properties
@@ -48,7 +48,7 @@
     - mailfilter.properties
     - permissions.properties
     - licensekeys.properties
-  
+
 - name: Start and enable open-xchange
   ansible.builtin.service:
     name: open-xchange

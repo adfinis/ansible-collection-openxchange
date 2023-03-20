@@ -14,7 +14,7 @@ documentconcerter_repository_pdftool: >-
 
 documentconverter_repository_server_updates: >-
   deb https://software.open-xchange.com/products/appsuite/{{ appsuite_version }}/documentconverter/updates/{{ appsuite_repository_release }}/ /
-documentconverter_repository_server_updates: >-
+documentconverter_repository_readerengine_updates: >-
   deb https://software.open-xchange.com/products/appsuite/{{ appsuite_version }}/readerengine/updates/{{ appsuite_repository_release }}/ /
 documentconverter_repository_api_updates: >-
   deb https://software.open-xchange.com/products/appsuite/{{ appsuite_version }}/documentconverter-api/updates/{{ appsuite_repository_release }}/ /

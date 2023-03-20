@@ -7,7 +7,7 @@ appsuite_repository_release: "Debian{{ ansible_facts.distribution_release[0] | u
 mobileapifacade_repository_versionmap:
   "7.10.5": "1.12.2"
   "7.10.6": "1.14.3"
-mobileapifacade_version: {{ moileapifacade_repository_versionmap[appsuite_version] }}
+mobileapifacade_version: "{{ moileapifacade_repository_versionmap[appsuite_version] }}"
 
 mobileapifacade_repository_facade: >-
   deb https://software.open-xchange.com/products/mobile-api-facade/{{ mobileapifacade_version }}/mobile-api-facade/{{ appsuite_repository_release }}/ /
