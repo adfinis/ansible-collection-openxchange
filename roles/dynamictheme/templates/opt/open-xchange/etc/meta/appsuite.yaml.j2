@@ -1,0 +1,16 @@
+---
+{{ ansible_managed | comment }}
+
+io.ox/core//theme:
+    protected: {{ dynamictheme_meta_core_theme_protected | ternary('true', 'false') }}
+io.ox/core//autoLogout:
+    protected: {{ dynamictheme_meta_core_autologout_protected | ternary('true', 'false') }}
+io.ox/mail//sendDispositionNotification:
+    protected: {{ dynamictheme_meta_mail_send_disposition_notification_protected | ternary('true', 'false') }}
+io.ox/tasks//notifyAcceptedDeclinedAsParticipant:
+    protected: {{ dynamictheme_meta_tasks_notify_protected | ternary('true', 'false') }}
+io.ox/calendar//notifyAcceptedDeclinedAsParticipant:
+    protected: {{ dynamictheme_meta_calendar_notify_protected | ternary('true', 'false') }}
+io.ox/core//apps/quickLaunch:
+    protected: {{ dynamictheme_meta_core_quicklaunch_protected | ternary('true', 'false') }}
+

@@ -1,0 +1,96 @@
+{{ ansible_managed | comment }}
+
+# The main highlight color. Setting only this variable might already be enough.
+# A dark color, default: #283f73
+io.ox/dynamic-theme//mainColor={{ dynamictheme_maincolor }}
+
+# Text color for links and border-less buttons.
+# A dark color, default: @io-ox-dynamic-theme-mainColor
+io.ox/dynamic-theme//linkColor={{ dynamictheme_linkcolor }}
+
+# Background color of the login screen.
+# A dark color, default: #1f3d66
+io.ox/dynamic-theme//loginColor={{ dynamictheme_logincolor }}
+
+# Text color of the "OX" prefix on the login screen.
+# A light color, default: #6cbafc
+io.ox/dynamic-theme//headerPrefixColor={{ dynamictheme_headerprefixcolor }}
+
+# Text color of the "App Suite" product name on the login screen.
+# A light color, default: #fff
+io.ox/dynamic-theme//headerColor={{ dynamictheme_headercolor }}
+
+# URL of an image which replaces the "OX App Suite" header text on
+# the login screen.
+io.ox/dynamic-theme//headerLogo={{ dynamictheme_headerlogo }}
+
+# URL of the logo in the top left corner of the top bar.
+io.ox/dynamic-theme//logoURL={{ dynamictheme_logourl }}
+
+# Width of the logo as number of pixels or any CSS length unit.
+# For best display on high-resolution screens, it is recommended to use
+# a bigger image and specify a smaller size here.
+# Set to "auto" to use the native width of the image.
+# Default: 60
+io.ox/dynamic-theme//logoWidth={{ dynamictheme_logowidth }}
+
+# Optional height of the logo as number of pixels or any CSS length unit.
+# The maximum value is 64. For best display on high-resolution screens,
+# it is recommended to use a bigger image and specify a smaller size here.
+# Set to "auto" to use the native height of the image.
+# Default: auto
+io.ox/dynamic-theme//logoHeight={{ dynamictheme_logoheight }}
+
+# Background color of the top bar.
+# Default: @io-ox-dynamic-theme-mainColor
+io.ox/dynamic-theme//topbarBackground={{ dynamictheme_topbarbackground }}
+
+# Icon color in the top bar.
+# Should contrast with io.ox/dynamic-theme//topbarBackground.
+# Default: #fff
+io.ox/dynamic-theme//topbarColor={{ dynamictheme_topbarcolor }}
+
+# Background of an item in the top bar when it has the keyboard focus,
+# the mouse hovers it, or it is active.
+# Default: rgba(0, 0, 0, 0.3)
+io.ox/dynamic-theme//topbarHover={{ dynamictheme_topbarhover }}
+
+# Icon color in the top bar when it has the keyboard focus,
+# the mouse hover it or it is active.
+# Should contrast with io.ox/dynamic-theme//topbarHover.
+# Default: @io-ox-dynamic-theme-topbarColor
+io.ox/dynamic-theme//topbarHoverColor={{ dynamictheme_topbarhovercolor }}
+
+# Background of selected items in the list view
+# when the list view does not have the keyboard focus.
+# A light color, default: #ddd
+io.ox/dynamic-theme//listSelected={{ dynamictheme_listselected }}
+
+# Background of a not selected item in the list view
+# when the mouse hovers over it.
+# A light color, default: #f7f7f7
+io.ox/dynamic-theme//listHover={{ dynamictheme_listhover }}
+
+# Background color of selected items in the list view
+# when the list view has the keyboard focus.
+# A dark color, default: @io-ox-dynamic-theme-mainColor
+io.ox/dynamic-theme//listSelectedFocus={{ dynamictheme_listselectedfocus }}
+
+# Background color of left the side panel.
+# A light color, default: #f5f5f5
+io.ox/dynamic-theme//folderBackground={{ dynamictheme_folderbackground }}
+
+# Background of a selected item in the side panel
+# when the side panel does not have the keyboard focus.
+# A light color, default: rgba(0, 0, 0, 0.1)
+io.ox/dynamic-theme//folderSelected={{ dynamictheme_folderselected }}
+
+# Background color of a not selected item in the side panel
+# when the mouse hovers over it.
+# A light color, default: rgba(0, 0, 0, 0.05)
+io.ox/dynamic-theme//folderHover={{ dynamictheme_folderhover }}
+
+# Background color of a selected item in the side panel
+# when the side panel has the keyboard focus.
+# A dark color, default: @io-ox-dynamic-theme-mainColor
+io.ox/dynamic-theme//folderSelectedFocus={{ dynamictheme_folderselectedfocus }}

@@ -1,0 +1,17 @@
+---
+
+- name: Render properties files
+  ansible.builtin.template:
+    src: "opt/open-xchange/etc/{{ item }}.j2"
+    dest: "/opt/open-xchange/etc/{{ item }}"
+    owner: root
+    group: root
+    mode: "0644"
+  notify:
+    - restart open-xchange
+  loop:
+    - dynamic-theme.properties
+    - meta/appsuite.yaml
+    - settings/appsuite.properties  # todo
+    - settings/open-xchange-dynamic-theme.properties
+    - as-config.yml

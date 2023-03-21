@@ -1,0 +1,13 @@
+---
+
+- name: Install Open-Xchange Dynamic Theme
+  ansible.builtin.import_tasks: install.yml
+  tags:
+    - "role::dynamictheme:install"
+    - "role::dynamictheme"
+
+- name: Configure Open-Xchange Dynamic Theme
+  ansible.builtin.import_tasks: config.yml
+  tags:
+    - "role::dynamictheme:config"
+    - "role::dynamictheme"

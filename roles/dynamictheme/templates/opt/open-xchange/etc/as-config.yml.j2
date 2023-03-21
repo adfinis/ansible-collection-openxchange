@@ -1,0 +1,9 @@
+---
+{{ ansible_managed | comment }}
+
+default:
+    host: all
+
+    oidcLogin: {{ oidc_enabled }}
+
+    {{ dynamictheme_login_additional_config | indent(4) }}

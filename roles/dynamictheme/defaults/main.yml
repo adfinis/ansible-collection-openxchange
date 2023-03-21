@@ -1,0 +1,36 @@
+---
+
+oidc_enabled: false
+
+dynamictheme_enabled: true
+
+dynamictheme_maincolor: "#283f73"
+dynamictheme_linkcolor: "@io-ox-dynamic-theme-mainColor"
+dynamictheme_logincolor: "#1f3d66"
+dynamictheme_headerprefixcolor: "#6cbafc"
+dynamictheme_headercolor: "#fff"
+dynamictheme_headerlogo: ""
+dynamictheme_logourl: ""
+dynamictheme_logowidth: "60"
+dynamictheme_logoheight: "auto"
+dynamictheme_topbarbackground: "@io-ox-dynamic-theme-mainColor"
+dynamictheme_topbarcolor: "#fff"
+dynamictheme_topbarhover: "rgba(0, 0, 0, 0.3)"
+dynamictheme_topbarhovercolor: "@io-ox-dynamic-theme-topbarColor"
+dynamictheme_listselected: "#ddd"
+dynamictheme_listhover: "#f7f7f7"
+dynamictheme_listselectedfocus: "@io-ox-dynamic-theme-mainColor"
+dynamictheme_folderbackground: "#f5f5f5"
+dynamictheme_folderselected: "rgba(0, 0, 0, 0.1)"
+dynamictheme_folderhover: "rgba(0, 0, 0, 0.05)"
+dynamictheme_folderselectedfocus: "@io-ox-dynamic-theme-mainColor"
+
+dynamictheme_meta_core_theme_protected: false
+dynamictheme_meta_core_autologout_protected: false
+dynamictheme_meta_mail_send_disposition_notification_protected: false
+dynamictheme_meta_tasks_notify_protected: false
+dynamictheme_meta_calendar_notify_protected: false
+dynamictheme_meta_core_quicklaunch_protected: false
+
+dynamictheme_login_additional_config: ""
+dynamictheme_appsuite_additional_config: ""

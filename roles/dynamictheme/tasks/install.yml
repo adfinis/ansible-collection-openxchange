@@ -1,0 +1,8 @@
+---
+
+- name: Install Dynamic Theme packages
+  ansible.builtin.apt:
+    name:
+      - open-xchange-dynamic-theme
+  notify:
+    - restart open-xchange
