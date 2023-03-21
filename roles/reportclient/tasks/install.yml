@@ -1,0 +1,5 @@
+---
+
+- name: Install Report Client
+  ansible.builtin.apt:
+    name: open-xchange-report-client

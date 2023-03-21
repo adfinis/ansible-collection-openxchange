@@ -1,0 +1,13 @@
+---
+
+- name: Install Open-Xchange Report Client
+  ansible.builtin.import_tasks: install.yml
+  tags:
+    - "role::reportclient:install"
+    - "role::reportclient"
+
+- name: Configure Open-Xchange Report Client
+  ansible.builtin.import_tasks: config.yml
+  tags:
+    - "role::reportclient:config"
+    - "role::reportclient"

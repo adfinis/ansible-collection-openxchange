@@ -1,0 +1,5 @@
+{{ ansible_managed | comment }}
+
+{% if reportclient_cron_enabled %}
+{{ reportclient_cron }}  open-xchange  /opt/open-xchange/sbin/report -s -x 1>/dev/null 2>&1
+{% endif %}

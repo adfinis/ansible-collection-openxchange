@@ -1,0 +1,11 @@
+---
+
+reportclient_proxy_useproxy: false
+reportclient_proxy_address: proxy.example.com
+reportclient_proxy_port: 8080
+reportclient_proxy_authrequired: false
+reportclient_proxy_username: USER
+reportclient_proxy_password: PASSWORD
+
+reportclient_cron_enabled: false
+reportclient_cron: "0 3 * * 7"
