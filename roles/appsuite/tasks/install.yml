@@ -62,6 +62,7 @@
     name:
       - open-xchange
       - open-xchange-grizzly
+      - open-xchange-rest
       - open-xchange-admin
       - open-xchange-appsuite
       - open-xchange-appsuite-backend
@@ -71,6 +72,12 @@
       - open-xchange-dav
       - open-xchange-meta-ui-appsuite
       - open-xchange-sessionstorage-hazelcast
+      - open-xchange-push-dovecot
+      - open-xchange-push-imapidle
+      - open-xchange-meta-appsuite-push
+      - open-xchange-mailfilter
+      - open-xchange-unifiedmail
+      - open-xchange-manage-group-resource
       - "{{ appsuite_authplugin }}"
 
 - name: Add /opt/open-xchange/sbin to PATH

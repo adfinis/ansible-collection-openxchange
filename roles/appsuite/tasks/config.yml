@@ -45,6 +45,7 @@
     - noipcheck.cnf
     - notification.properties
     - mail.properties
+    - mail-push.properties
     - mailfilter.properties
     - permissions.properties
     - licensekeys.properties

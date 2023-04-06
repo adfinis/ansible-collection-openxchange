@@ -1,0 +1,13 @@
+---
+
+- name: Install App Suite client onboarding
+  ansible.builtin.import_tasks: install.yml
+  tags:
+    - "role::clientonboarding:install"
+    - "role::clientonboarding"
+
+- name: Configure App Suite client onboarding
+  ansible.builtin.import_tasks: config.yml
+  tags:
+    - "role::clientonboarding:config"
+    - "role::clientonboarding"

@@ -1,0 +1,23 @@
+---
+
+clientonboarding_scenario_emclientinstall_enabled: false
+clientonboarding_scenario_driveappinstall_enabled: false
+clientonboarding_scenario_davsync_enabled: false
+clientonboarding_scenario_davmanual_enabled: false
+clientonboarding_scenario_eassync_enabled: false
+clientonboarding_scenario_easmanual_enabled: false
+clientonboarding_scenario_mailsync_enabled: false
+clientonboarding_scenario_mailmanual_enabled: false
+
+clientonboarding_caldav_url: ""
+clientonboarding_carddav_url: ""
+clientonboarding_eas_url: ""
+clientonboarding_emclient_url: ""
+clientonboarding_emclient_premium: false
+
+clientonboarding_mail_imap_host: ""
+clientonboarding_mail_imap_port: ""
+clientonboarding_mail_imap_secure: false
+clientonboarding_mail_smtp_host: ""
+clientonboarding_mail_smtp_port: ""
+clientonboarding_mail_smtp_secure: false

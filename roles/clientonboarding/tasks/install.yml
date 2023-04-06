@@ -1,0 +1,5 @@
+---
+
+- name: Install client onboarding
+  ansible.builtin.apt:
+    name: open-xchange-client-onboarding
