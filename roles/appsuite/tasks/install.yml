@@ -39,8 +39,8 @@
     login: "{{ appsuite_repository_username }}"
     password: "{{ appsuite_repository_password }}"
   when:
-    - "appsuite_repository_username is not null"
-    - "appsuite_repository_password is not null"
+    - "appsuite_repository_username is not none"
+    - "appsuite_repository_password is not none"
 
 - name: Add apt repositories for Open-Xchange core components
   ansible.builtin.apt_repository:
