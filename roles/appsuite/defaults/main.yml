@@ -76,6 +76,7 @@ appsuite_tmpdir_path: /var/spool/open-xchange/uploads
 
 appsuite_jkroute: APP1
 appsuite_cluster_name: "{{ ansible_facts.hostname }}"
+appsuite_object_link_hostname: "{{ ansible_facts.hostname }}"
 appsuite_object_link: "http://{{ ansible_facts.hostname }}"
 appsuite_extras_link: "http://{{ ansible_facts.hostname }}"
 appsuite_network_listener_host: localhost
