@@ -14,7 +14,6 @@
     repo: "{{ item }}"
   when: "documentconverter_repository_component_updates"
   loop:
-    - "{{ documentconverter_repository_server_updates }}"
     - "{{ documentconverter_repository_readerengine_updates }}"
     - "{{ documentconverter_repository_api_updates }}"
     - "{{ documentconverter_repository_pdftool_updates }}"
