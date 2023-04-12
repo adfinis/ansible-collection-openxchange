@@ -163,7 +163,7 @@
 	ServerAdmin webmaster@localhost
         ServerName {{ apache2_vhost_servername }}
 {% for alias in apache2_vhost_serveralias %}
-	ServerAlias {{ apache2_vhost_alias }}
+	ServerAlias {{ alias }}
 {% endfor %}
 
 	DocumentRoot /var/www/html
@@ -202,7 +202,7 @@
 	ServerAdmin webmaster@localhost
         ServerName {{ apache2_vhost_servername }}
 {% for alias in apache2_vhost_serveralias %}
-	ServerAlias {{ apache2_vhost_alias }}
+	ServerAlias {{ alias }}
 {% endfor %}
 
 	RewriteEngine On
