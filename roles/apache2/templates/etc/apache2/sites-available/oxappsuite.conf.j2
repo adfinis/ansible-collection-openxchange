@@ -200,7 +200,7 @@
 
 	DocumentRoot /var/www/html
 	ServerAdmin webmaster@localhost
-        ServerName {{ apache2_vhost_servername }}
+	ServerName {{ apache2_vhost_servername }}
 {% for alias in apache2_vhost_serveralias %}
 	ServerAlias {{ alias }}
 {% endfor %}
