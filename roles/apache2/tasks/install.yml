@@ -1,0 +1,6 @@
+---
+
+- name: Install apache2
+  ansible.builtin.apt:
+    name:
+      - apache2

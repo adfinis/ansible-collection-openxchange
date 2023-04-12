@@ -1,0 +1,49 @@
+---
+
+apache2_ox_modules:
+  - ssl
+  - rewrite
+  - headers
+  - expires
+  - deflate
+  - mime
+  - setenvif
+  - proxy
+  - proxy_http
+  - proxy_balancer
+  - lbmethod_byrequests
+apache2_additional_modules: []
+
+apache2_ssl_cert_filename: null
+apache2_ssl_key_filename: null
+apache2_ssl_vhost_redirect_enabled: false
+apache2_ssl_vhost_redirect_bind: "*:80"
+apache2_ssl_vhost_redirect_permanent: false
+
+apache2_vhost_bind: "{{ (apache2_ssl_cert_filename is not none or apache2_ssl_key_filename is not none) | ternary('*:443', '*:80') }}"
+apache2_vhost_servername: "{{ ansible_facts.fqdn }}"
+apache2_vhost_serveralias: []
+
+apache2_balancer_hostgroup: null
+apache2_balancer_member_jkroute: "{{ appsuite_jkroute }}"
+apache2_balancer_member_host: "http://{{ ansible_facts.default_ipv4.address }}:8009"
+apache2_balancer_local_host: "http://localhost:8009"
+
+apache2_documentconverter_enabled: false
+apache2_documentconverter_balancer_hostgroup: "{{ apache2_balancer_hostgroup }}"
+apache2_documentconverter_balancer_member_jkroute: "{{ apache2_balancer_member_jkroute }}"
+apache2_documentconverter_balancer_member_host: "{{ apache2_balancer_member_host }}"
+apache2_documentconverter_balancer_local_host: "{{ apache2_balancer_local_host }}"
+apache2_documentconverter_allow: ["127.0.0.0/8", "::1"]
+
+apache2_eas_enabled: false
+apache2_eas_balancer_hostgroup: "{{ apache2_balancer_hostgroup }}"
+apache2_eas_balancer_member_jkroute: "{{ apache2_balancer_member_jkroute }}"
+apache2_eas_balancer_member_host: "{{ apache2_balancer_member_host }}"
+apache2_eas_balancer_local_host: "{{ apache2_balancer_local_host }}"
+
+apache2_maf_enabled: false
+apache2_maf_balancer_hostgroup: "{{ apache2_balancer_hostgroup }}"
+apache2_maf_balancer_member_jkroute: "F{{ apache2_balancer_member_jkroute }}"
+apache2_maf_balancer_member_host: "http://{{ ansible_facts.default_ipv4.address }}:8007"
+apache2_maf_balancer_local_host: "http://localhost:8007"

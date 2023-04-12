@@ -4,8 +4,3 @@
   ansible.builtin.service:
     name: restart open-xchange-mobile-api-facade
     state: restarted
-
-- name: reload apache2
-  ansible.builtin.service:
-    name: reload apache2
-    state: reloaded

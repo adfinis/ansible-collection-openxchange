@@ -1,0 +1,13 @@
+---
+
+- name: Install Apache2
+  ansible.builtin.import_tasks: install.yml
+  tags:
+    - "role::apache2:install"
+    - "role::apache2"
+
+- name: Configure Apache2 OX AppSuite vhost
+  ansible.builtin.import_tasks: config.yml
+  tags:
+    - "role::apache2:config"
+    - "role::apache2"
