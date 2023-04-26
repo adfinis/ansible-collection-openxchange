@@ -1,6 +1,6 @@
 ---
 
-oidc_enabled: false
+appsuite_oidc_enabled: false
 
 dynamictheme_enabled: true
 

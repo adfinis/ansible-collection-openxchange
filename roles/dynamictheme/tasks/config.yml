@@ -1,5 +1,22 @@
 ---
 
+- name: Create directory for static content
+  ansible.builtin.file:
+    path: "/var/www/html/appsuite/apps/themes/custom"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Upload static files
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "{{ item[5:] }}"
+    owner: root
+    group: root
+    mode: "0644"
+  with_fileglob: "files/var/www/html/appsuite/apps/themes/custom/*"
+
 - name: Render properties files
   ansible.builtin.template:
     src: "opt/open-xchange/etc/{{ item }}.j2"
