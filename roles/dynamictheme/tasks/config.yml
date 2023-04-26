@@ -11,7 +11,7 @@
 - name: Upload static files
   ansible.builtin.copy:
     src: "{{ item }}"
-    dest: "{{ item[5:] }}"
+    dest: "/var/www/html/appsuite/apps/themes/custom/{{ item | basename }}"
     owner: root
     group: root
     mode: "0644"
