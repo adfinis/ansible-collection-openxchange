@@ -79,6 +79,7 @@
       - open-xchange-unifiedmail
       - open-xchange-manage-group-resource
       - "{{ appsuite_authplugin }}"
+      - "{{ appsuite_python_mysql_library }}"
 
 - name: Add /opt/open-xchange/sbin to PATH
   ansible.builtin.template:

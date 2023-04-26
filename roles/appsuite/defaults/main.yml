@@ -20,6 +20,7 @@ appsuite_repository_appsuiteui_updates: >-
 appsuite_repository_component_updates: false  # requires OX AppSuite 7 subscription
 
 appsuite_authplugin: open-xchange-authentication-database
+appsuite_python_mysql_library: python3-pymysql
 
 
 appsuite_configdb_host: localhost
