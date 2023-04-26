@@ -1,6 +1,6 @@
 ---
 
-temurin_repository_release: "{{ ansible_facts.distribution_release }}"
+appsuite_temurin_repository_release: "{{ ansible_facts.distribution_release }}"
 
 appsuite_version: "7.10.6"
 
@@ -141,11 +141,11 @@ appsuite_ldap_bind_password: ""
 appsuite_ldap_referral: follow
 
 
-oidc_additional_config: ""
-oidc_enabled: false
-oidc_response_type: code
-oidc_password_grant: false
-oidc_password_grant_namepart: full
-oidc_context_lookup_namepart: full
-oidc_user_lookup_namepart: full
-oidc_user_lookup_claim: preferred_username
+appsuite_oidc_additional_config: ""
+appsuite_oidc_enabled: false
+appsuite_oidc_response_type: code
+appsuite_oidc_password_grant: false
+appsuite_oidc_password_grant_namepart: full
+appsuite_oidc_context_lookup_namepart: full
+appsuite_oidc_user_lookup_namepart: full
+appsuite_oidc_user_lookup_claim: preferred_username

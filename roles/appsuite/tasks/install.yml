@@ -6,7 +6,7 @@
 
 - name: Add apt repository for Eclipse Temurin JRE 8
   ansible.builtin.apt_repository:
-    repo: "deb https://packages.adoptium.net/artifactory/deb/ {{ temurin_repository_release }} main"
+    repo: "deb https://packages.adoptium.net/artifactory/deb/ {{ appsuite_temurin_repository_release }} main"
 
   # This is an ugly hack needed because the name of this 3rd party JRE package changed.
   # This equivs package satisfies the dependency with the old name "adoptopenjdk-8-hotspot-jre"

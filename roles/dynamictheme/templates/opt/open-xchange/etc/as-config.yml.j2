@@ -4,6 +4,6 @@
 default:
     host: all
 
-    oidcLogin: {{ oidc_enabled }}
+    oidcLogin: {{ appsuite_oidc_enabled }}
 
     {{ dynamictheme_login_additional_config | indent(4) }}

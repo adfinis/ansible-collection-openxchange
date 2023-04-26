@@ -1,29 +1,29 @@
 {{ ansible_managed | comment }}
 
-com.openexchange.oidc.enabled={{ oidc_enabled | ternary('true', 'false') }}
-com.openexchange.oidc.startDefaultBackend={{ oidc_enabled | ternary('true', 'false') }}
+com.openexchange.oidc.enabled={{ appsuite_oidc_enabled | ternary('true', 'false') }}
+com.openexchange.oidc.startDefaultBackend={{ appsuite_oidc_enabled | ternary('true', 'false') }}
 
-com.openexchange.oidc.opIssuer={{ oidc_issuer }}
-com.openexchange.oidc.clientId={{ oidc_client_id }}
-com.openexchange.oidc.clientSecret={{ oidc_client_secret }}
-com.openexchange.oidc.scope={{ oidc_scope }}
-com.openexchange.oidc.responseType={{ oidc_response_type }}
+com.openexchange.oidc.opIssuer={{ appsuite_oidc_issuer }}
+com.openexchange.oidc.clientId={{ appsuite_oidc_client_id }}
+com.openexchange.oidc.clientSecret={{ appsuite_oidc_client_secret }}
+com.openexchange.oidc.scope={{ appsuite_oidc_scope }}
+com.openexchange.oidc.responseType={{ appsuite_oidc_response_type }}
 
-com.openexchange.oidc.rpRedirectURIAuth={{ oidc_redirect_url }}
-com.openexchange.oidc.opAuthorizationEndpoint={{ oidc_authorization_endpoint }}
-com.openexchange.oidc.opTokenEndpoint={{ oidc_token_endpoint }}
-com.openexchange.oidc.opJwkSetEndpoint={{ oidc_jwkset_endpoint }}
-com.openexchange.oidc.opLogoutEndpoint={{ oidc_logout_endpoint }}
-com.openexchange.oidc.rpRedirectURILogout={{ oidc_logout_redirect_url }}
-com.openexchange.oidc.rpRedirectURIPostSSOLogout={{ oidc_redirect_post_sso_logout }}
-com.openexchange.oidc.ssoLogout={{ oidc_sso_logout | ternary('true', 'false') }}
+com.openexchange.oidc.rpRedirectURIAuth={{ appsuite_oidc_redirect_url }}
+com.openexchange.oidc.opAuthorizationEndpoint={{ appsuite_oidc_authorization_endpoint }}
+com.openexchange.oidc.opTokenEndpoint={{ appsuite_oidc_token_endpoint }}
+com.openexchange.oidc.opJwkSetEndpoint={{ appsuite_oidc_jwkset_endpoint }}
+com.openexchange.oidc.opLogoutEndpoint={{ appsuite_oidc_logout_endpoint }}
+com.openexchange.oidc.rpRedirectURILogout={{ appsuite_oidc_logout_redirect_url }}
+com.openexchange.oidc.rpRedirectURIPostSSOLogout={{ appsuite_oidc_redirect_post_sso_logout }}
+com.openexchange.oidc.ssoLogout={{ appsuite_oidc_sso_logout | ternary('true', 'false') }}
 
-com.openexchange.oidc.enablePasswordGrant = {{ oidc_password_grant | ternary('true', 'false') }}
-com.openexchange.oidc.passwordGrantUserNamePart={{ oidc_password_grant_namepart }}
+com.openexchange.oidc.enablePasswordGrant = {{ appsuite_oidc_password_grant | ternary('true', 'false') }}
+com.openexchange.oidc.passwordGrantUserNamePart={{ appsuite_oidc_password_grant_namepart }}
 
-com.openexchange.oidc.contextLookupClaim={{ oidc_context_lookup_claim }}
-com.openexchange.oidc.contextLookupNamePart={{ oidc_context_lookup_namepart }}
-com.openexchange.oidc.userLookupClaim={{ oidc_user_lookup_claim }}
-com.openexchange.oidc.userLookupNamePart={{ oidc_user_lookup_namepart }}
+com.openexchange.oidc.contextLookupClaim={{ appsuite_oidc_context_lookup_claim }}
+com.openexchange.oidc.contextLookupNamePart={{ appsuite_oidc_context_lookup_namepart }}
+com.openexchange.oidc.userLookupClaim={{ appsuite_oidc_user_lookup_claim }}
+com.openexchange.oidc.userLookupNamePart={{ appsuite_oidc_user_lookup_namepart }}
 
-{{ oidc_additional_config }}
+{{ appsuite_oidc_additional_config }}

@@ -33,6 +33,7 @@
 
 - name: Configure OpenID Connect client
   ansible.builtin.import_tasks: oidc.yml
+  when: "appsuite_oidc_enabled"
   tags:
     - "role::appsuite"
     - "role::appsuite:oidc"

@@ -1,5 +1,10 @@
 ---
 
+- name: Install open-xchange-oidc
+  ansible.builtin.apt:
+    name: open-xchange-oidc
+  notify: restart open-xchange
+
 - name: Render openid.properties
   ansible.builtin.template:
     src: opt/open-xchange/etc/openid.properties.j2
