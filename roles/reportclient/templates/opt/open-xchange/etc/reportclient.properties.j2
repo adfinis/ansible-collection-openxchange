@@ -2,9 +2,9 @@
 
 # This defines if a proxy server should be used to establish the http connection
 # to the Open-Xchange report server, and if which server and proxy details to use.
-com.openexchange.report.client.proxy.useproxy={{ reportclient_proxy_useproxy }}
+com.openexchange.report.client.proxy.useproxy={{ reportclient_proxy_useproxy | ternary('true', 'false') }}
 com.openexchange.report.client.proxy.address={{ reportclient_proxy_address }}
 com.openexchange.report.client.proxy.port={{ reportclient_proxy_port }}
-com.openexchange.report.client.proxy.authrequired={{ reportclient_proxy_authrequired }}
+com.openexchange.report.client.proxy.authrequired={{ reportclient_proxy_authrequired | ternary('true', 'false') }}
 com.openexchange.report.client.proxy.username={{ reportclient_proxy_username }}
 com.openexchange.report.client.proxy.password={{ reportclient_proxy_password }}
