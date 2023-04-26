@@ -26,7 +26,7 @@
 
 - name: Configure LDAP authplugin
   ansible.builtin.import_tasks: ldap.yml
-  when: "appsuite_authplugin == open-xchange-authentication-ldap"
+  when: "appsuite_authplugin == 'open-xchange-authentication-ldap'"
   tags:
     - "role::appsuite"
     - "role::appsuite:ldap"
