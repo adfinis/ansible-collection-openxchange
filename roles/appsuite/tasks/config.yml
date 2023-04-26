@@ -15,6 +15,7 @@
   # There should be exactly one such db_pool name, fail otherwise
   failed_when: "appsuite_register_ccdb_query.query_result[0] | length != 1"
   changed_when: false
+  check_mode: false
   register: appsuite_register_ccdb_query
 
 - name: Render globaldb.yml

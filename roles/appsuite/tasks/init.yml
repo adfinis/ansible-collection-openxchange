@@ -76,6 +76,7 @@
   # There should be exactly one such db_pool name, fail otherwise
   failed_when: "appsuite_register_init_write_userdb.query_result[0] | length != 1"
   changed_when: false
+  check_mode: false
   register: appsuite_register_init_write_userdb
 
 - name: Register the read user database in configdb
@@ -125,6 +126,7 @@
   # There should be exactly one such db_pool name, fail otherwise
   failed_when: "appsuite_register_init_write_ccdb.query_result[0] | length != 1"
   changed_when: false
+  check_mode: false
   register: appsuite_register_init_write_ccdb
 
 - name: Register the userdb as cross-context read database in configdb
