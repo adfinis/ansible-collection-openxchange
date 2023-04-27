@@ -2,6 +2,17 @@
 
 <VirtualHost {{ apache2_vhost_bind }}>
 
+{% if apache2_server_status_enabled %}
+	<Location /server-status>
+		SetHandler server-status
+		Order Deny,Allow
+		Deny from all
+{% for acl in apache2_server_status_acl %}
+		Allow from {{ acl }}
+{% endfor %}
+	</Location>
+{% endif %}    
+
 	<IfModule mod_proxy_http.c>
 	   ProxyRequests Off
 	   ProxyStatus On

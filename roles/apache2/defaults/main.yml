@@ -48,3 +48,6 @@ apache2_maf_balancer_hostgroup: "{{ apache2_balancer_hostgroup }}"
 apache2_maf_balancer_member_jkroute: "F{{ apache2_balancer_member_jkroute }}"
 apache2_maf_balancer_member_host: "http://{{ ansible_facts.default_ipv4.address }}:8007"
 apache2_maf_balancer_local_host: "http://localhost:8007"
+
+apache2_server_status_enabled: false
+apache2_server_status_acl: ["127.0.0.0/8", "::1"]

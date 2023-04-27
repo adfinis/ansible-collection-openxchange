@@ -6,6 +6,12 @@
   loop: "{{ apache2_ox_modules + apache2_additional_modules }}"
   notify: restart apache2
 
+- name: Enable Apache2 status module
+  community.general.apache2_module:
+    name: status
+    state: "apache2_server_status_enabled | ternary('present', 'absent')"
+  notify: restart apache2
+
 - name: Render Apache2 vhost
   ansible.builtin.template:
     src: etc/apache2/sites-available/oxappsuite.conf.j2
