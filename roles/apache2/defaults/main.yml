@@ -20,6 +20,7 @@ apache2_ssl_vhost_redirect_enabled: false
 apache2_ssl_vhost_redirect_bind: "*:80"
 apache2_ssl_vhost_redirect_permanent: false
 
+apache2_disable_default_vhost: false
 apache2_vhost_bind: "{{ (apache2_ssl_cert_filename is not none or apache2_ssl_key_filename is not none) | ternary('*:443', '*:80') }}"
 apache2_vhost_servername: "{{ ansible_facts.fqdn }}"
 apache2_vhost_serveralias: []

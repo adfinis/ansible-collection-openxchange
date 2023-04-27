@@ -24,3 +24,10 @@
     group: root
     mode: "0644"
   notify: reload apache2
+
+- name: Disable Apache2 default vhost
+  ansible.builtin.file:
+    path: /etc/apache2/sites-enabled/000-default.conf
+    state: absent
+  when: apache2_disable_default_vhost
+  notify: reload apache2
