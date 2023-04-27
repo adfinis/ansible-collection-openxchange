@@ -12,6 +12,7 @@ mobilityconnector_repository_usm_updates: >-
   deb https://software.open-xchange.com/products/appsuite/{{ appsuite_version }}/usm/updates/{{ appsuite_repository_release }}/ /
 mobilityconnector_repository_component_updates: false  # requires subscription
 
+mobilityconnector_usm_ox_url: "http://localhost/ajax/"
 
 mobilityconnector_eas_mail_time_limit: 3
 mobilityconnector_eas_sync_all_folders: email
