@@ -9,7 +9,7 @@
 - name: Enable Apache2 status module
   community.general.apache2_module:
     name: status
-    state: "apache2_server_status_enabled | ternary('present', 'absent')"
+    state: "{{ apache2_server_status_enabled | ternary('present', 'absent') }}"
   notify: restart apache2
 
 - name: Render Apache2 vhost
