@@ -216,6 +216,18 @@
 
 	RewriteEngine On
 	RewriteCond %{HTTPS} off
+{% if apache2_server_status_enabled %}
+	RewriteCond %{REQUEST_URI} !^/server-status
+{% endif %}
 	RewriteRule ^(.*)$ https://%{HTTP_HOST}$1 [L{%- if apache2_ssl_vhost_redirect_permanent -%},R=301{%- endif -%}]
+
+{% if apache2_server_status_enabled %}
+	<Location /server-status>
+		SetHandler server-status
+{% for acl in apache2_server_status_acl %}
+		Require ip {{ acl }}
+{% endfor %}
+	</Location>
+{% endif %}    
 </VirtualHost>
 {% endif %}
