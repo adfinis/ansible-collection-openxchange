@@ -5,10 +5,8 @@
 {% if apache2_server_status_enabled %}
 	<Location /server-status>
 		SetHandler server-status
-		Order Deny,Allow
-		Deny from all
 {% for acl in apache2_server_status_acl %}
-		Allow from {{ acl }}
+		Require ip {{ acl }}
 {% endfor %}
 	</Location>
 {% endif %}    
