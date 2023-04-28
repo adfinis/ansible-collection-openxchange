@@ -1,0 +1,28 @@
+{{ ansible_managed | comment }}
+
+# Define where to perform folder grouping.
+# This filters the database results for duplicate folders in the where
+# clause of the db statement or afterwards in the application.
+# Possible values: TRUE / FALSE
+ENABLE_DB_GROUPING: TRUE
+
+# Enable or disable folder caching. Possible values: TRUE / FALSE
+ENABLE_FOLDER_CACHE: TRUE
+
+# Define if users are allowed to edit their own contact object
+# contained in folder 'Global Address Book' aka 'Internal Users'.
+ENABLE_INTERNAL_USER_EDIT={{ appsuite_foldercache_enable_internal_user_edit | ternary('TRUE', 'FALSE') }}
+
+# Specifies whether a user's default InfoStore folder should appear below
+# InfoStore root folder:
+#
+# - Infostore
+# -- My files
+# -- Public infostore
+# -- Userstore
+# -- Other infstore folders
+com.openexchange.folderstorage.outlook.showPersonalBelowInfoStore=true
+
+# Specifies whether default InfoStore folders are labeled with owning user's display name
+# or name is read from folder storage (database)
+com.openexchange.folderstorage.database.preferDisplayName=false

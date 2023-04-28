@@ -144,6 +144,8 @@ appsuite_quota_share_links: 100
 appsuite_quota_invite_guests: 100
 appsuite_carddav_ignore_folders: []
 appsuite_share_static_guest_capabilities: []
+appsuite_adminuser_allow_changing_quota_if_no_filestore_set: false
+appsuite_foldercache_enable_internal_user_edit: true
 
 appsuite_ldap_url: ldap://localhost:389/dc=example,dc=com
 appsuite_ldap_authentication_type: simple
