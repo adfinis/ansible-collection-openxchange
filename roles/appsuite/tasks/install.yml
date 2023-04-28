@@ -78,6 +78,7 @@
       - open-xchange-mailfilter
       - open-xchange-unifiedmail
       - open-xchange-messaging
+      - open-xchange-subscribe
       - open-xchange-manage-group-resource
       - "{{ appsuite_authplugin }}"
       - "{{ appsuite_python_mysql_library }}"

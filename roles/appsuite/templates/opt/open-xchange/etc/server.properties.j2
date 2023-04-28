@@ -19,7 +19,7 @@ UPLOAD_DIRECTORY=/var/spool/open-xchange/uploads
 # basis by setting the upload_quota in the mail configuration of this user
 # If this value is set to 0 and not overridden by the module config or user config uploads will be unrestricted.
 # The size is in bytes.
-MAX_UPLOAD_SIZE=104857600
+MAX_UPLOAD_SIZE={{ appsuite_max_upload_size }}
 
 # The max. idle time in milliseconds for an uploaded file temporary stored in
 # upload directory

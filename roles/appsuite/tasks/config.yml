@@ -49,8 +49,14 @@
     - mail-push.properties
     - mailfilter.properties
     - permissions.properties
+    - secret.properties
+    - secrets
     - licensekeys.properties
+    - quota.properties
+    - share.properties
     - calendar.properties
+    - carddav.properties
+    - subscribe.properties
     - rssmessaging.properties
     - settings/portal.yml
 

@@ -87,6 +87,9 @@ appsuite_session_max: 0
 appsuite_session_max_peruser: 100
 appsuite_session_lifetime: 3600000
 
+appsuite_secret_sources: ["<password>"]
+appsuite_secret_random: ""
+
 appsuite_license_key: null
 appsuite_master_user: oxadminmaster
 
@@ -130,8 +133,17 @@ appsuite_messaging_rss_feed_schemes: ["http", "https", "ftp"]
 appsuite_portal_config: ""
 
 appsuite_calendar_ical_refresh_interval: 10080
+appsuite_calendar_xctx2_enabled: false
 
 appsuite_default_permissions: []
+appsuite_quota_task: 250000
+appsuite_quota_contact: 250000
+appsuite_quota_infostore: 250000
+appsuite_quota_attachment: 250000
+appsuite_quota_share_links: 100
+appsuite_quota_invite_guests: 100
+appsuite_carddav_ignore_folders: []
+appsuite_share_static_guest_capabilities: []
 
 appsuite_ldap_url: ldap://localhost:389/dc=example,dc=com
 appsuite_ldap_authentication_type: simple
