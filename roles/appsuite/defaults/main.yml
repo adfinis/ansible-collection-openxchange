@@ -143,6 +143,7 @@ appsuite_calendar_ical_refresh_interval: 10080
 appsuite_calendar_xctx2_enabled: false
 
 appsuite_default_permissions: []
+appsuite_quota_calendar: 250000
 appsuite_quota_task: 250000
 appsuite_quota_contact: 250000
 appsuite_quota_infostore: 250000
