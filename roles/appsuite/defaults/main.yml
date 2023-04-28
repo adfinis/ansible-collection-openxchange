@@ -121,8 +121,17 @@ appsuite_mailfilter_port: 4190
 appsuite_mailpush_allowed_clients: >-
   "USM-EAS*", "open-xchange-mobile-api-facade*", "open-xchange-appsuite"
 
-appsuite_default_permissions: []
+appsuite_messaging_rss_enabled: false
+appsuite_messaging_rss_feed_size: 4194304  # 4MB
+appsuite_messaging_rss_feed_blacklist: ["127.0.0.1-127.255.255.255", "localhost"]
+appsuite_messaging_rss_feed_whitelist_ports: [80, 443]
+appsuite_messaging_rss_feed_schemes: ["http", "https", "ftp"]
 
+appsuite_portal_config: ""
+
+appsuite_calendar_ical_refresh_interval: 10080
+
+appsuite_default_permissions: []
 
 appsuite_ldap_url: ldap://localhost:389/dc=example,dc=com
 appsuite_ldap_authentication_type: simple

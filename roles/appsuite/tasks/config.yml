@@ -50,6 +50,9 @@
     - mailfilter.properties
     - permissions.properties
     - licensekeys.properties
+    - calendar.properties
+    - rssmessaging.properties
+    - settings/portal.yml
 
 - name: Start and enable open-xchange
   ansible.builtin.service:
