@@ -73,6 +73,13 @@ appsuite_transport_server_source: user
 appsuite_jvm_memory: "{{ [8192, (ansible_facts.memory_mb.real.total /2)] | min }}"
 appsuite_clt_memory: 50  # command line tools
 
+appsuite_log_max_index: 99
+appsuite_log_max_file_size: "2MB"
+
+appsuite_jolokia_start: false
+appsuite_jolokia_user: ""
+appsuite_jolokia_password: ""
+
 appsuite_tmpdir_path: /var/spool/open-xchange/uploads
 
 appsuite_jkroute: APP1

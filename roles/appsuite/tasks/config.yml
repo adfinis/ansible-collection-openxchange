@@ -40,6 +40,8 @@
   loop:
     - configdb.properties
     - ox-scriptconf.sh
+    - logback.xml
+    - jolokia.properties
     - hazelcast.properties
     - server.properties
     - sessiond.properties
