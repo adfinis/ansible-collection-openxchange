@@ -51,6 +51,7 @@
     - mail-push.properties
     - mailfilter.properties
     - permissions.properties
+    - ModuleAccessDefinitions.properties
     - secret.properties
     - secrets
     - licensekeys.properties

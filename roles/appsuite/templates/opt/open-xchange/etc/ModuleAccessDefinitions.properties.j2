@@ -1,0 +1,44 @@
+{{ ansible_managed | comment }}
+
+# File contains all access combinations which can be used by the server
+# when creating/changing contexts/users.
+#
+# Currently available modules/interfaces/rights listed below.
+#
+# Modules:
+# webmail
+# calendar
+# contacts
+# infostore
+# tasks
+#
+# Interfaces:
+# webdav (WebDAV interface to the InfoStore)
+# webdavxml (interface for OXtender for Microsoft Outlook, used by KDE for synchronization) [DEPRECATED]
+# ical (WebDAV iCal readonly interface to the calendar)
+# vcard (WebDAV vCard readonly interface to the contacts)
+# syncml (enables 3rd party implementations of the SyncML interface)
+# usm (Universal Sync Module, necessary for ActiveSync and OXtender 2 for Microsoft Outlook)
+# olox20 (OLOX v2.0, the new MS Outlook connector) [DEPRECATED]
+# activesync (enables the Exchange Active Sync protocol to sync with business mobile devices)
+#
+# Permissions:
+# readcreatesharedfolders (permission to share private folder and to view shared folder of other users)
+# delegatetask (permission to create tasks that contain other users as participants)
+# editpublicfolders (permission to modify public folders or data in them)
+# editgroup (permission to administrate groups)
+# editresource (permission to administrate resources)
+# editpassword (permission to change its own password)
+# globaladdressbookdisabled (Possibility to disabled the global address book for the user)
+# publicfoldereditable (user gets folder administrator permissions on public folders)
+#
+# Features:
+# collectemailaddresses (Collecting email addresses from received and send emails)
+# multiplemailaccounts (Permission to add additional EMail accounts)
+# subscription (Permission to subscribe to publications or to use the crawler)
+# publication (Permission to publish content of folders, Deprecated with v7.10.2, will have no impact) [DEPRECATED]
+# deniedportal (Permission to turn off portal access)
+
+{% for access, features in appsuite_module_access_definitions.items() %}
+{{ access }}={{ features }}
+{% endfor %}
