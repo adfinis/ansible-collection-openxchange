@@ -1,5 +1,14 @@
 ---
 
+- name: Disable mpm_prefork and mpm_event
+  community.general.apache2_module:
+    name: "{{ item }}"
+    state: absent
+  loop:
+    - mpm_prefork
+    - mpm_event
+  notify: restart apache2
+
 - name: Enable Apache2 modules
   community.general.apache2_module:
     name: "{{ item }}"
@@ -11,6 +20,25 @@
     name: status
     state: "{{ apache2_server_status_enabled | ternary('present', 'absent') }}"
   notify: restart apache2
+
+- name: Render Apache2 mpm_worker config
+  ansible.builtin.template:
+    src: etc/apache2/conf-available/mpm_worker.conf.j2
+    dest: /etc/apache2/conf-available/mpm_worker.conf
+    owner: root
+    group: root
+    mode: "0644"
+  notify: reload apache2
+
+- name: Enable Apache2 mpm_worker config
+  ansible.builtin.file:
+    path: /etc/apache2/conf-enabled/mpm_worker.conf
+    src: /etc/apache2/conf-available/mpm_worker.conf
+    state: link
+    owner: root
+    group: root
+    mode: "0644"
+  notify: reload apache2
 
 - name: Render Apache2 vhost
   ansible.builtin.template:

@@ -1,6 +1,7 @@
 ---
 
 apache2_ox_modules:
+  - mpm_worker
   - ssl
   - rewrite
   - headers
