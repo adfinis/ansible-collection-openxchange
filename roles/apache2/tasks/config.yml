@@ -1,12 +1,14 @@
 ---
 
-- name: Disable mpm_prefork and mpm_event
+- name: Switch MPM to mpm_worker
   community.general.apache2_module:
     name: "{{ item }}"
-    state: absent
+    state: "{{ 'present' if item == 'mpm_worker' else 'absent' }}"
+    warn_mpm_absent: false
   loop:
     - mpm_prefork
     - mpm_event
+    - mpm_worker
   notify: restart apache2
 
 - name: Enable Apache2 modules
