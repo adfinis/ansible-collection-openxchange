@@ -200,6 +200,8 @@
         SSLSessionTickets off
 {% endif %}          
 
+	{{ apache2_additional_config | indent('	') }}
+
 </VirtualHost>
 
 {% if apache2_ssl_vhost_redirect_enabled %}
