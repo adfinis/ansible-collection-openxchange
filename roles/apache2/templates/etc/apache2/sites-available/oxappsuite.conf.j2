@@ -200,7 +200,7 @@
         SSLSessionTickets off
 {% endif %}          
 
-	{{ apache2_additional_config | indent('	') }}
+        {{ apache2_additional_config | indent(8) }}
 
 </VirtualHost>
 
