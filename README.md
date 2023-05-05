@@ -108,6 +108,12 @@ $ ansible-playbook playbook.yml --limit oxappsuite --tags role::appsuite:install
 $ ansible-playbook playbook.yml --limit oxappsuite --diff
 ```
 
+In future playbook runs (to roll out config changes or upgrade the cluster), omit the tagged run:
+
+```shell-session
+$ ansible-playbook playbook.yml --limit oxappsuite --diff
+```
+
 If everything went right, you should now have OX App Suite running at `https://ox.example.org/`.
 
 
