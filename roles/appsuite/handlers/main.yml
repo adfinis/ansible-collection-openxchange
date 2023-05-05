@@ -1,12 +1,12 @@
 ---
 
-- name: Restart AppSuite
+- name: "Restart AppSuite (this can take a few minutes)"
   ansible.builtin.service:
     name: open-xchange
     state: restarted
   listen: "restart open-xchange"
 
-- name: Wait for AppSuite to be reachable again
+- name: "Wait for AppSuite to be reachable again (this can take a few minutes)"
   ansible.builtin.uri:
     url: http://localhost:8009/health
   failed_when: "appsuite_register_uri_health.status != 200 or appsuite_register_uri_health.json.status != 'UP'"
