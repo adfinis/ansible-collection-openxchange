@@ -4,10 +4,10 @@ stages:
   - lint
 
 include:
-  - project: 'ad-sy/ci-templates'
+  - project: 'int-infrastructure/ci-templates'
     ref: main
     file: '/templates/lint/ansible-lint.yml'
-  - project: 'ad-sy/ci-templates'
+  - project: 'int-infrastructure/ci-templates'
     ref: main
     file: '/templates/lint/yamllint.yml'
 
