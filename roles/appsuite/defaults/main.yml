@@ -131,6 +131,9 @@ appsuite_mailfilter_port: 4190
 appsuite_mailpush_allowed_clients: >-
   "USM-EAS*", "open-xchange-mobile-api-facade*", "open-xchange-appsuite"
 
+appsuite_mail_account_blacklist: ["127.0.0.1-127.255.255.255", "localhost"]
+appsuite_mail_account_ports_whitelist: ["143", "993", "25", "465", "587", "110", "995"]
+
 appsuite_messaging_rss_enabled: false
 appsuite_messaging_rss_feed_size: 4194304  # 4MB
 appsuite_messaging_rss_feed_blacklist: ["127.0.0.1-127.255.255.255", "localhost"]
