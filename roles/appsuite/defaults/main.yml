@@ -128,6 +128,13 @@ appsuite_mailfilter_redirect_whitelist: []
 appsuite_mailfilter_host: localhost
 appsuite_mailfilter_port: 4190
 
+appsuite_noreply_address: ""
+appsuite_noreply_login: ""
+appsuite_noreply_password: ""
+appsuite_noreply_server: ""
+appsuite_noreply_port: 25
+appsuite_noreply_securemode: plain
+
 appsuite_mailpush_allowed_clients: >-
   "USM-EAS*", "open-xchange-mobile-api-facade*", "open-xchange-appsuite"
 

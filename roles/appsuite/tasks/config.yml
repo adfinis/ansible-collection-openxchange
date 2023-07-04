@@ -50,6 +50,7 @@
     - mail.properties
     - mail-push.properties
     - mailfilter.properties
+    - noreply.properties
     - permissions.properties
     - ModuleAccessDefinitions.properties
     - secret.properties
