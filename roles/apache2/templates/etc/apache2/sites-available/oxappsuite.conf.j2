@@ -21,9 +21,9 @@
 	       # restrict access to the soap provisioning API
 	       Order Deny,Allow
 	       Deny from all
-	       Allow from 127.0.0.1
-	       # you might add more ip addresses / networks here
-	       # Allow from 192.168 10 172.16
+{% for range in apache2_oxsoap_acl %}
+	       Allow from {{ range %}
+{% endfor %}
 	   </Location>
 	
 	   # The old path is kept for compatibility reasons

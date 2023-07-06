@@ -215,3 +215,5 @@ appsuite_module_access_definitions:
   # By default 'all' is the same as 'groupware_premium', except the right 'publicfoldereditable'.
   # As this right only applies to context administrators, 'all' is internally equivalent to 'groupware_premium' for normal users.
   all: webmail,calendar,contacts,infostore,tasks,webdav,webdavxml,ical,vcard,syncml,usm,olox20,activesync,readcreatesharedfolders,delegatetask,editpublicfolders,editgroup,editresource,editpassword,publicfoldereditable,collectemailaddresses,multiplemailaccounts,subscription,publication
+
+appsuite_enable_ucsoxconnector_access: false
