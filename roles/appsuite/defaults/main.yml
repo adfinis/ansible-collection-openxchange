@@ -189,6 +189,7 @@ appsuite_ldap_referral: follow
 
 appsuite_oidc_additional_config: ""
 appsuite_oidc_enabled: false
+appsuite_oidc_mail_oauthbearer: true
 appsuite_oidc_response_type: code
 appsuite_oidc_password_grant: false
 appsuite_oidc_password_grant_namepart: full

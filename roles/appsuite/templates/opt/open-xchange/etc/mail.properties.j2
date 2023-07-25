@@ -1,6 +1,6 @@
 {{ ansible_managed | comment }}
 
-{% if appsuite_oidc_enabled %}
+{% if appsuite_oidc_enabled and appsuite_oidc_mail_oauthbearer %}
 com.openexchange.mail.authType={{ appsuite_mail_authtype }}
 com.openexchange.mail.transport.authType={{ appsuite_transport_authtype }}
 {% endif %}
