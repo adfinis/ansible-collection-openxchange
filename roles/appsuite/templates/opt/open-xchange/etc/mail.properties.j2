@@ -1,6 +1,6 @@
 {{ ansible_managed | comment }}
 
-{% if appsuite_oidc_enabled %}
+{% if appsuite_oidc_enabled and appsuite_oidc_mail_oauthbearer %}
 com.openexchange.mail.authType={{ appsuite_mail_authtype }}
 com.openexchange.mail.transport.authType={{ appsuite_transport_authtype }}
 {% endif %}
@@ -18,7 +18,7 @@ com.openexchange.mail.loginSource={{ appsuite_mail_login_source }}
 # system's password is taken. If 'global' is set, then the value specified through
 # property 'com.openexchange.mail.masterPassword' is taken.
 # Currently known values: session and global
-com.openexchange.mail.passwordSource=session
+com.openexchange.mail.passwordSource={{ appsuite_mail_password_source }}
 
 # Set the mail server source for primary mail account; meaning which source is taken to determine the mail
 # server into which the user wants to login to access mails. Set to 'global' to take
@@ -36,7 +36,7 @@ com.openexchange.mail.transportServerSource={{ appsuite_transport_server_source 
 
 # The master password for primary mail/transport server. Only takes effect when property
 # "com.openexchange.mail.passwordSource" is set to "global"
-com.openexchange.mail.masterPassword=secret
+com.openexchange.mail.masterPassword={{ appsuite_mail_master_password }}
 
 # Primary mail server: e.g. 192.168.178.32:8143 or imap://192.168.178.32:7143
 # Only takes effect when property "com.openexchange.mail.mailServerSource" is set to "global"

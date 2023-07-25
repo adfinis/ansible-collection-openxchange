@@ -66,8 +66,10 @@ appsuite_userdb_read_driver: "{{ appsuite_configdb_read_driver }}"
 appsuite_global_imapserver: "imap://{{ ansible_facts.hostname }}:143"
 appsuite_global_smtpserver: "smtp://{{ ansible_facts.hostname }}:25"
 appsuite_mail_login_source: login
+appsuite_mail_password_source: session
 appsuite_mail_server_source: user
 appsuite_transport_server_source: user
+appsuite_mail_master_password: secret
 
 # By default, dedicate half of the available memory to JVM, but no more than 8G
 appsuite_jvm_memory: "{{ [8192, (ansible_facts.memory_mb.real.total /2)] | min }}"
@@ -127,6 +129,8 @@ appsuite_mailfilter_authtype: ""
 appsuite_mailfilter_redirect_whitelist: []
 appsuite_mailfilter_host: localhost
 appsuite_mailfilter_port: 4190
+appsuite_mailfilter_password_source: "{{ appsuite_mail_password_source }}"
+appsuite_mailfilter_master_password: "{{ appsuite_mail_master_password }}"
 
 appsuite_noreply_address: ""
 appsuite_noreply_login: ""
@@ -185,6 +189,7 @@ appsuite_ldap_referral: follow
 
 appsuite_oidc_additional_config: ""
 appsuite_oidc_enabled: false
+appsuite_oidc_mail_oauthbearer: true
 appsuite_oidc_response_type: code
 appsuite_oidc_password_grant: false
 appsuite_oidc_password_grant_namepart: full
