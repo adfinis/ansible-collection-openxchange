@@ -169,6 +169,7 @@ appsuite_share_static_guest_capabilities: []
 appsuite_share_guest_hostname: "{{ appsuite_object_link_hostname }}"
 appsuite_adminuser_allow_changing_quota_if_no_filestore_set: false
 appsuite_foldercache_enable_internal_user_edit: true
+appsuite_folder_max_permission_entities: 100
 
 appsuite_ldap_url: ldap://localhost:389/dc=example,dc=com
 appsuite_ldap_authentication_type: simple

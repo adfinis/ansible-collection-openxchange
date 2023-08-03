@@ -58,6 +58,7 @@
     - licensekeys.properties
     - AdminUser.properties
     - foldercache.properties
+    - folder.properties
     - quota.properties
     - share.properties
     - calendar.properties
