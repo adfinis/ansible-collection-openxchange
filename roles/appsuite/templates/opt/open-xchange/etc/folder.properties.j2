@@ -1,0 +1,82 @@
+{{ ansible_managed | comment }}
+
+# Specifies default permission to use in case folder is supposed to be created below a certain parent folder.
+# The value is a pipe (<code>|</code>) separated listing of expressions; each expression defines the default permissions
+# for a denoted parent folder. Currently the reserved folder identifiers "2" and "15" are considered as "2"
+# denoted the public PIM folder whereas "15" denotes the public Drive folder.
+#
+# An expression starts with the parent folder identifier followed by <code>=</code> character; e.g. "2=".
+# Then there is a comma-separated list of permissions to assume per entity (user or group).
+#
+# Each permission either starts with <code>user_</code>, <code>admin_user_</code>, <code>group_</code> or <code>admin_group_</code> (the prefix "admin_" controls
+# whether the entity is supposed to be set as folder administrator) followed by the numeric entity identifier.
+#
+# Then an <code>@</code> character is supposed to occur and finally followed by a rights expression. The rights may be dot-separated
+# listing (<code>&lt;folder-permission&gt;.&lt;read-permission&gt;.&lt;write-permission&gt;.&lt;delete-permission&gt;</code>) or one
+# of the tokens  <code>viewer</code>, <code>writer</code> or <code>author</code>.
+#
+# More formally:
+# <pre>
+# expressions = expression ("|" expression)*
+# expression = folder "=" permission ("," permission)*
+# permission = ("admin_")? ("group_" | "user_") entity(int) "@" rights
+# rights = (folder-permission(int) "." read-permission(int) "." write-permission(int) "." delete-permission(int)) | ("viewer" | "writer" | "author")
+# </pre>
+# Example 1:
+# <pre>
+# com.openexchange.folderstorage.defaultPermissions=2=group_2@2.4.0.0,admin_user_5@8.4.4.4|15=admin_group_2@8.8.8.8
+# </pre>
+# Example 2:
+# <pre>
+# com.openexchange.folderstorage.defaultPermissions=2=group_2@viewer,admin_user_5@author|15=admin_group_2@writer
+# </pre>
+#
+# Cascading: true
+# Reloadable: true
+#
+# Default: No defaut value
+com.openexchange.folderstorage.defaultPermissions = No defaut value
+
+# Specifies if permissions of new parent folder should be applied when moving a folder into the public folder tree.
+# Three different modes are supported: <code>keep</code>, <code>inherit</code> or <code>merge</code>.
+# <code>keep</code>: The permissions of the moved folder and of its subfolders remain unchanged.
+# <code>inherit</code>: The permissions of the new parent folder is applied to the moved folder and all of its subfolders.
+# <code>merge</code>: The permissions of the new parent folder and moved folder are first merged, then applied to the moved folder and all of its subfolders.
+#
+# Cascading: true
+# Reloadable: true
+#
+# Default: inherit
+com.openexchange.folderstorage.permissions.moveToPublic = inherit
+
+# Specifies if permissions of new parent folder should be applied when moving a folder into a shared folder tree.
+# Three different modes are supported: <code>keep</code>, <code>inherit</code> or <code>merge</code>.
+# <code>keep</code>: The permissions of the moved folder and of its subfolders remain unchanged.
+# <code>inherit</code>: The permissions of the new parent folder is applied to the moved folder and all of its subfolders.
+# <code>merge</code>: The permissions of the new parent folder and moved folder are first merged, then applied to the moved folder and all of its subfolders.
+#
+# Cascading: true
+# Reloadable: true
+#
+# Default: inherit
+com.openexchange.folderstorage.permissions.moveToShared = inherit
+
+# Specifies if permissions of the new parent folder should be applied when moving a folder into the private folder tree.
+# Three different modes are supported: <code>keep</code>, <code>inherit</code> or <code>merge</code>.
+# <code>keep</code>: The permissions of moved folder and of its subfolders remain unchanged.
+# <code>inherit</code>: The permissions of the new parent folder is applied to the moved folder and all of its subfolders.
+# <code>merge</code>: The permissions of the new parent folder and moved folder are first merged, then applied to the moved folder and all of its subfolders.
+#
+# Cascading: true
+# Reloadable: true
+#
+# Default: inherit
+com.openexchange.folderstorage.permissions.moveToPrivate = inherit
+
+# Specifies the maximal allowed number of folder permissions. A value below 0 deactivates this limit.
+#
+# Cascading: true
+# Reloadable: true
+#
+# Default: 100
+com.openexchange.folder.maxPermissionEntities={{ appsuite_folder_max_permission_entities }}
