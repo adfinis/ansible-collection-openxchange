@@ -103,7 +103,7 @@ com.openexchange.cookie.hash.salt={{ appsuite_session_cookie_salt }}
 # encrypted connections. If HTTPS is terminated in front by some load balancer only HTTP is detected. Then this parameter can force to set
 # the secure flag for cookies. Additionally all links generated inside the groupware to point at itself will use the https:// protocol prefix
 # when this is set. Use this flag to indicate that HTTPS termination happens elsewhere.
-com.openexchange.forceHTTPS=false
+com.openexchange.forceHTTPS={{ appsuite_force_https | default('true', 'false') }}
 
 # The maximum number of active sessions that will be created by this Manager, or -1 for no limit.
 # Default is 250.000 HTTP sessions

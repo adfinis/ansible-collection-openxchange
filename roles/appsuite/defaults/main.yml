@@ -91,6 +91,7 @@ appsuite_object_link: "http://{{ ansible_facts.hostname }}"
 appsuite_extras_link: "http://{{ ansible_facts.hostname }}"
 appsuite_network_listener_host: localhost
 appsuite_ajp_bind_port: "*"
+appsuite_force_https: false
 
 appsuite_session_max: 0
 appsuite_session_max_peruser: 100
