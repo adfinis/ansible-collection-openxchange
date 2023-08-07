@@ -22,7 +22,7 @@
 	       Order Deny,Allow
 	       Deny from all
 {% for range in apache2_oxsoap_acl %}
-	       Allow from {{ range %}
+	       Allow from {{ range }}
 {% endfor %}
 	   </Location>
 	
