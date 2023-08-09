@@ -198,7 +198,20 @@
         SSLCipherSuite {{ apache2_ssl_cipher_suite }}
         SSLHonorCipherOrder off
         SSLSessionTickets off
-{% endif %}          
+{% endif %}
+
+{% if apache2_dav_agent_redirect %}
+	RewriteEngine on
+{% for agent in apache2_dav_agent_strings %}
+	RewriteCond %{HTTP_USER_AGENT} "{{ agent }}" {% if not loop.last %}[OR]{% endif %}
+{% endfor %}
+	RewriteCond %{HTTP_USER_AGENT} "!Open-Xchange Calendar Feed Client"
+	RewriteRule (.*) http://localhost:8009/servlet/dav$1 [P]
+
+	RewriteCond %{REQUEST_URI} ^/\.well-known/caldav   [OR]
+	RewriteCond %{REQUEST_URI} ^/\.well-known/carddav
+	RewriteRule (.*) / [L,R]
+{% endif %}
 
         {{ apache2_additional_config | indent(8) }}
 
