@@ -59,3 +59,30 @@ apache2_server_status_acl: ["127.0.0.0/8", "::1"]
 apache2_oxsoap_acl: ["127.0.0.0/8", "::1"]
 
 apache2_additional_config: ""
+
+apache2_dav_agent_redirect: true
+apache2_dav_agent_strings:
+  - Calendar
+  - Reminders
+  - DataAccess
+  - DAVKit
+  - DAVx5
+  - DAVdroid
+  - Lightning
+  - Thunderbird
+  - Adresboek
+  - dataaccessd
+  - Preferences
+  - Adressbuch
+  - AddressBook
+  - Address Book
+  - CalendarStore
+  - CalendarAgent
+  - CalDAV%20Sync%20Adapter
+  - CalDavSynchronizer
+  - accountsd
+  - remindd
+  - eM Client
+  - OX Sync
+  - CalDav
+  - CoreDAV
