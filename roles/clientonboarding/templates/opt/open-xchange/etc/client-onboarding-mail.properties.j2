@@ -26,7 +26,7 @@ com.openexchange.client.onboarding.mail.imap.secure={{ clientonboarding_mail_ima
 # This service can be used to provide custom imap login names.
 #
 # Defaults to 'false'
-com.openexchange.client.onboarding.mail.imap.login.customsource=false
+com.openexchange.client.onboarding.mail.imap.login.customsource={{ clientonboarding_mail_imap_login_customsource | ternary('true', 'false') }}
 
 
 
@@ -55,4 +55,4 @@ com.openexchange.client.onboarding.mail.smtp.secure={{ clientonboarding_mail_smt
 # This service can be used to provide custom smtp login names.
 #
 # Defaults to 'false'
-com.openexchange.client.onboarding.mail.smtp.login.customsource=false
+com.openexchange.client.onboarding.mail.smtp.login.customsource={{ clientonboarding_mail_smtp_login_customsource | ternary('true', 'false') }}

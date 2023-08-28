@@ -19,4 +19,4 @@ com.openexchange.client.onboarding.eas.url={{ clientonboarding_eas_url }}
 # If available, then the login string is taken from such a custom login source
 #
 # Default is false
-com.openexchange.client.onboarding.eas.login.customsource=false
+com.openexchange.client.onboarding.eas.login.customsource={{ clientonboarding_eas_login_customsource | ternary('true', 'false') }}

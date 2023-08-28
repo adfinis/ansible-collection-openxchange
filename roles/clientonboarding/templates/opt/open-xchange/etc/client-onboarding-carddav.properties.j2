@@ -20,4 +20,4 @@ com.openexchange.client.onboarding.carddav.url={{ clientonboarding_carddav_url }
 # If available, then the login string is taken from such a custom login source
 #
 # Default is false
-com.openexchange.client.onboarding.carddav.login.customsource=false
+com.openexchange.client.onboarding.carddav.login.customsource={{ clientonboarding_carddav_login_customsource | ternary('true', 'false') }}

@@ -1,0 +1,32 @@
+{{ ansible_managed | comment }}
+# Default value for overriding the login information displayed
+# in the client onboarding.
+#
+# Possible values:
+# email
+#   uses the user's defaultSenderAddress
+# attr:<name>
+#   uses the user's attribute <name>
+# login
+#   uses the user's login, which is the same as if the
+#   onboarding login was not overriden by this plugin
+# login_name
+#   uses the loginName attribute when possible, which is only the case
+#   for session based logins (IMAP, SMTP) and for protocols that do not
+#   create a session (CalDAV, CardDAV, EAS), it falls back on the login
+#   instead
+#
+# This property is config cascade aware and must be set globally
+# (in this file), and can then be overriden by context and/or by
+# user.
+#
+# Note that for this feature to be enabled, one is also required
+# to set one or more the following properties, depending on the
+# client onboaridng dialogs that need the login information to
+# be overriden by this plugin:
+#com.openexchange.client.onboarding.caldav.login.customsource=true
+#com.openexchange.client.onboarding.carddav.login.customsource=true
+#com.openexchange.client.onboarding.mail.imap.login.customsource=true
+#com.openexchange.client.onboarding.mail.smtp.login.customsource=true
+#
+com.openexchange.plugins.onboarding.login={{ clientonboarding_customsource_maillogin_source }}

@@ -19,3 +19,4 @@
     - opt/open-xchange/etc/client-onboarding-emclient.properties
     - opt/open-xchange/etc/client-onboarding-syncapp.properties
     - opt/open-xchange/etc/client-onboarding-scenarios.yml
+    - opt/open-xchange/etc/client-onboarding-maillogin.properties
