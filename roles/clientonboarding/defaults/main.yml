@@ -1,5 +1,11 @@
 ---
 
+appsuite_version: "7.10.6"
+appsuite_repository_release: "Debian{{ ansible_facts.distribution_release[0] | upper }}{{ ansible_facts.distribution_release[1:] }}"
+
+clientonboarding_repository_plugins: >-
+  deb https://software.open-xchange.com/products/appsuite/{{ appsuite_version }}/plugins/{{ appsuite_repository_release }}/ /
+
 clientonboarding_scenario_emclientinstall_enabled: false
 clientonboarding_scenario_driveappinstall_enabled: false
 clientonboarding_scenario_davsync_enabled: false
@@ -10,14 +16,22 @@ clientonboarding_scenario_mailsync_enabled: false
 clientonboarding_scenario_mailmanual_enabled: false
 
 clientonboarding_caldav_url: ""
+clientonboarding_caldav_login_customsource: "{{ clientonboarding_customsource_maillogin }}"
 clientonboarding_carddav_url: ""
+clientonboarding_carddav_login_customsource: "{{ clientonboarding_customsource_maillogin }}"
 clientonboarding_eas_url: ""
+clientonboarding_eas_login_customsource: "{{ clientonboarding_customsource_maillogin }}"
 clientonboarding_emclient_url: ""
 clientonboarding_emclient_premium: false
 
 clientonboarding_mail_imap_host: ""
 clientonboarding_mail_imap_port: ""
 clientonboarding_mail_imap_secure: false
+clientonboarding_mail_imap_login_customsource: "{{ clientonboarding_customsource_maillogin }}"
 clientonboarding_mail_smtp_host: ""
 clientonboarding_mail_smtp_port: ""
 clientonboarding_mail_smtp_secure: false
+clientonboarding_mail_smtp_login_customsource: "{{ clientonboarding_customsource_maillogin }}"
+
+clientonboarding_customsource_maillogin_source: login
+clientonboarding_customsource_maillogin: false

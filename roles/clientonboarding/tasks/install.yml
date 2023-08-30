@@ -3,3 +3,13 @@
 - name: Install client onboarding
   ansible.builtin.apt:
     name: open-xchange-client-onboarding
+
+- name: Add plugins repository
+  ansible.builtin.apt_repository:
+    repo: "{{ clientonboarding_repository_plugins }}"
+  when: clientonboarding_customsource_maillogin
+
+- name: Install client onboarding maillogin plugin
+  ansible.builtin.apt:
+    name: open-xchange-plugins-onboarding-maillogin
+  when: clientonboarding_customsource_maillogin
