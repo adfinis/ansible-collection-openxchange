@@ -130,6 +130,7 @@ appsuite_mailfilter_authtype: ""
 appsuite_mailfilter_redirect_whitelist: []
 appsuite_mailfilter_host: localhost
 appsuite_mailfilter_port: 4190
+appsuite_mailfilter_script_name: Open-Xchange
 appsuite_mailfilter_password_source: "{{ appsuite_mail_password_source }}"
 appsuite_mailfilter_master_password: "{{ appsuite_mail_master_password }}"
 
