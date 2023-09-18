@@ -64,6 +64,7 @@
       - open-xchange-grizzly
       - open-xchange-rest
       - open-xchange-admin
+      - open-xchange-admin-soap
       - open-xchange-appsuite
       - open-xchange-appsuite-backend
       - open-xchange-appsuite-manifest

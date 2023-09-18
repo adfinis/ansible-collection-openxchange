@@ -25,7 +25,7 @@ AUTO_TO_LOWERCASE_UID=false
 # symbolic names so when changing the user name without changing
 # the ACL breaks the ACL. open-xchange-admin will NOT change those
 # ACLS, so DO NOT CHANGE THIS SETTING ON OX Express
-USERNAME_CHANGEABLE=false
+USERNAME_CHANGEABLE={{ appsuite_adminuser_username_changeable | ternary('true', 'false') }}
 
 # Here you can set whether the primary mail address can be changed or not.
 # If set to false, it is possible to change the primary mail address.
