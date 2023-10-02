@@ -157,6 +157,7 @@ appsuite_portal_config: ""
 
 appsuite_calendar_ical_refresh_interval: 10080
 appsuite_calendar_xctx2_enabled: false
+appsuite_calendar_birthdays_enabled: true
 
 appsuite_default_permissions: []
 appsuite_quota_calendar: 250000

@@ -3,3 +3,7 @@
 # Defines the default refresh interval of the calendar feeds (in minutes).
 # Default: 10080
 com.openexchange.calendar.ical.refreshInterval={{ appsuite_calendar_ical_refresh_interval }}
+
+# Configures if the birthdays calendar provider is available for a user or not.
+# Default: true
+com.openexchange.calendar.birthdays.enabled={{ appsuite_calendar_birthdays_enabled | ternary('true', 'false')}}
