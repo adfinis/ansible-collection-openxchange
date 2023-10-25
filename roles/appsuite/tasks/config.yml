@@ -66,6 +66,7 @@
     - subscribe.properties
     - rssmessaging.properties
     - settings/portal.yml
+    - user.properties
 
 - name: Start and enable open-xchange
   ansible.builtin.service:
