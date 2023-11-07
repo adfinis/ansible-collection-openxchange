@@ -2,7 +2,7 @@
 
 ![License](https://img.shields.io/github/license/adfinis/ansible-collection-openxchange)
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/adfinis/ansible-collection-openxchange/ansible-lint.yml)
-![adfinis.openxchange on Ansible Galaxy](https://img.shields.io/ansible/collection/adfinis.openxchange)
+[![adfinis.openxchange on Ansible Galaxy](https://img.shields.io/badge/collection-adfinis.openxchange-blue)](https://galaxy.ansible.com/ui/repo/published/adfinis/openxchange/)
 
 
 Deploy [OX App Suite](https://www.open-xchange.com/products/ox-app-suite/) and some of its components.
