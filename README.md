@@ -1,5 +1,10 @@
 # Ansible Collection - adfinis.openxchange
 
+![License](https://img.shields.io/github/license/adfinis/ansible-collection-openxchange)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/adfinis/ansible-collection-openxchange/ansible-lint.yml)
+![adfinis.openxchange on Ansible Galaxy](https://img.shields.io/ansible/collection/adfinis.openxchange)
+
+
 Deploy [OX App Suite](https://www.open-xchange.com/products/ox-app-suite/) and some of its components.
 
 ## Requirements
@@ -16,13 +21,13 @@ Deploy [OX App Suite](https://www.open-xchange.com/products/ox-app-suite/) and s
 
 ## License
 
-See [LICENSE](LICENSE)
+[GPL-3.0-or-later](LICENSE)
 
 ## Author Information
 
-The `adfinis.openxchange` collection was written by:
+The Ansible collection `adfinis.openxchange` was written by:
 
-- [Adfinis AG](https://www.adfinis.com/) | [GitHub](https://github.com/adfinis)
+* Adfinis AG | [Website](https://www.adfinis.com/) | [GitHub](https://github.com/adfinis)
 
 
 ## Usage

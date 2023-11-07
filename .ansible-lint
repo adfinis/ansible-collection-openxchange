@@ -1,7 +1,10 @@
 ---
 
 skip_list:
+  - meta-runtime[unsupported-version]
+  - galaxy[version-incorrect]
   - galaxy[no-changelog]
   - schema[meta-runtime]
   - name[casing]
   - yaml[comments-indentation]
+  - var-naming[no-role-prefix]

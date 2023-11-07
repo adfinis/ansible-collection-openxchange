@@ -72,7 +72,7 @@ appsuite_transport_server_source: user
 appsuite_mail_master_password: secret
 
 # By default, dedicate half of the available memory to JVM, but no more than 8G
-appsuite_jvm_memory: "{{ [8192, (ansible_facts.memory_mb.real.total /2)] | min }}"
+appsuite_jvm_memory: "{{ [8192, (ansible_facts.memory_mb.real.total / 2)] | min }}"
 appsuite_clt_memory: 50  # command line tools
 
 appsuite_log_max_index: 99
