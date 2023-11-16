@@ -43,6 +43,7 @@
     - logback.xml
     - jolokia.properties
     - hazelcast.properties
+    - dbconnector.yaml
     - server.properties
     - sessiond.properties
     - noipcheck.cnf

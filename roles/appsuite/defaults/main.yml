@@ -62,6 +62,8 @@ appsuite_userdb_read_user: "{{ appsuite_configdb_read_user }}"
 appsuite_userdb_read_pass: "{{ appsuite_configdb_read_pass }}"
 appsuite_userdb_read_driver: "{{ appsuite_configdb_read_driver }}"
 
+appsuite_dbconnector_connect_timeout: 15000
+appsuite_dbconnector_socket_timeout: 15000
 
 appsuite_global_imapserver: "imap://{{ ansible_facts.hostname }}:143"
 appsuite_global_smtpserver: "smtp://{{ ansible_facts.hostname }}:25"

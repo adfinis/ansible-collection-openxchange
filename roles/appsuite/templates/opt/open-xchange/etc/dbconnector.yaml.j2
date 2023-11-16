@@ -1,0 +1,15 @@
+{{ ansible_managed | comment }}
+
+com.mysql.jdbc:
+    useUnicode: true
+    characterEncoding: UTF-8
+    autoReconnect: false
+    useServerPrepStmts: false
+    useTimezone: true
+    serverTimezone: UTC
+    connectTimeout: {{ appsuite_dbconnector_connect_timeout }}
+    socketTimeout: {{ appsuite_dbconnector_socket_timeout }}
+    useSSL: false
+    requireSSL: false
+    verifyServerCertificate: false
+    enabledTLSProtocols: TLSv1,TLSv1.1,TLSv1.2
