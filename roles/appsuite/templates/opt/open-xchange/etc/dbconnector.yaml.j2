@@ -1,15 +1,15 @@
 {{ ansible_managed | comment }}
 
 com.mysql.jdbc:
-    useUnicode: true
-    characterEncoding: UTF-8
-    autoReconnect: false
-    useServerPrepStmts: false
-    useTimezone: true
-    serverTimezone: UTC
+    useUnicode: {{ appsuite_dbconnector_use_unicode | ternary('true', 'false') }}
+    characterEncoding: {{ appsuite_dbconnector_character_encoding }}
+    autoReconnect: {{ appsuite_dbconnector_auto_reconnect | ternary('true', 'false') }}
+    useServerPrepStmts: {{ appsuite_dbconnector_use_server_prep_stmts | ternary('true', 'false') }}
+    useTimezone: {{ appsuite_dbconnector_use_timezone | ternary('true', 'false') }}
+    serverTimezone: {{ appsuite_dbconnector_server_timezone }}
     connectTimeout: {{ appsuite_dbconnector_connect_timeout }}
     socketTimeout: {{ appsuite_dbconnector_socket_timeout }}
-    useSSL: false
-    requireSSL: false
-    verifyServerCertificate: false
-    enabledTLSProtocols: TLSv1,TLSv1.1,TLSv1.2
+    useSSL: {{ appsuite_dbconnector_use_ssl | ternary('true', 'false') }}
+    requireSSL: {{ appsuite_dbconnector_require_ssl | ternary('true', 'false') }}
+    verifyServerCertificate: {{ appsuite_dbconnector_verify_server_certificate | ternary('true', 'false') }}
+    enabledTLSProtocols: {{ appsuite_dbconnector_enabled_tls_protocols | join(',') }}
