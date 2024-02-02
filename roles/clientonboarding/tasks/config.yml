@@ -7,7 +7,7 @@
     owner: root
     group: root
     mode: "0644"
-  notify: restart open-xchange
+  notify: Restart Open-Xchange
   loop:
     - opt/open-xchange/etc/client-onboarding.properties
     - opt/open-xchange/etc/client-onboarding-caldav.properties

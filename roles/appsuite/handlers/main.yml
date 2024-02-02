@@ -1,10 +1,9 @@
 ---
 
-- name: "Restart AppSuite (this can take a few minutes)"
+- name: "Restart Open-Xchange"
   ansible.builtin.service:
     name: open-xchange
     state: restarted
-  listen: "restart open-xchange"
 
 - name: "Wait for AppSuite to be reachable again (this can take a few minutes)"
   ansible.builtin.uri:
@@ -14,4 +13,4 @@
   register: appsuite_register_uri_health
   delay: 10
   retries: 60
-  listen: "restart open-xchange"
+  listen: "Restart Open-Xchange"

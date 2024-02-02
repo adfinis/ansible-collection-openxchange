@@ -7,4 +7,4 @@
     owner: root
     group: root
     mode: "0644"
-  notify: restart open-xchange
+  notify: "Restart Open-Xchange"

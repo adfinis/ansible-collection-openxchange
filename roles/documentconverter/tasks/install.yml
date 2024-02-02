@@ -25,5 +25,5 @@
       - open-xchange-documentconverter-client
       - readerengine
   notify:
-    - restart open-xchange
+    - Restart Open-Xchange
     - restart open-xchange-documentconverter-server

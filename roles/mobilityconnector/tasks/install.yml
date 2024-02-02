@@ -19,5 +19,5 @@
     name:
       - open-xchange-meta-mobility
   notify:
-    - restart open-xchange
+    - Restart Open-Xchange
     - restart apache2

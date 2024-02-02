@@ -5,4 +5,4 @@
     name:
       - open-xchange-dynamic-theme
   notify:
-    - restart open-xchange
+    - Restart Open-Xchange
