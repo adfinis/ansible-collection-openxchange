@@ -12,4 +12,4 @@
       - open-xchange-mobile-api-facade
       - open-xchange-pns-mobile-api-facade
   notify:
-    - restart open-xchange
+    - Restart Open-Xchange

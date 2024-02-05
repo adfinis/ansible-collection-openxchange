@@ -1,6 +1,0 @@
----
-
-- name: restart open-xchange
-  ansible.builtin.service:
-    name: open-xchange
-    state: restarted

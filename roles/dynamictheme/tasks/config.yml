@@ -25,7 +25,7 @@
     group: root
     mode: "0644"
   notify:
-    - restart open-xchange
+    - Restart Open-Xchange
   loop:
     - dynamic-theme.properties
     - meta/appsuite.yaml

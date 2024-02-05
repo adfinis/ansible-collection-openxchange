@@ -8,7 +8,7 @@
     group: root
     mode: "0644"
   notify:
-    - restart open-xchange
+    - Restart Open-Xchange
   loop:
     - owncloud_oauth.properties
     - settings/owncloud-filepicker.properties
