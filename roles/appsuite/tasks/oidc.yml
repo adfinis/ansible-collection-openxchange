@@ -3,7 +3,7 @@
 - name: Install open-xchange-oidc
   ansible.builtin.apt:
     name: open-xchange-oidc
-  notify: "Restart Open-Xchange"
+  notify: Restart Open-Xchange
 
 - name: Render openid.properties
   ansible.builtin.template:
@@ -12,4 +12,4 @@
     owner: root
     group: root
     mode: "0644"
-  notify: "Restart Open-Xchange"
+  notify: Restart Open-Xchange

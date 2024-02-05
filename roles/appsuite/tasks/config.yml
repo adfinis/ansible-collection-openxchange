@@ -27,7 +27,7 @@
     mode: "0644"
   vars:
     ccdb_pool_id: "{{ appsuite_register_ccdb_query.query_result[0][0]['db_pool_id'] }}"
-  notify: "Restart Open-Xchange"
+  notify: Restart Open-Xchange
 
 - name: Render properties files
   ansible.builtin.template:
@@ -36,7 +36,7 @@
     owner: root
     group: root
     mode: "0644"
-  notify: "Restart Open-Xchange"
+  notify: Restart Open-Xchange
   loop:
     - configdb.properties
     - ox-scriptconf.sh
