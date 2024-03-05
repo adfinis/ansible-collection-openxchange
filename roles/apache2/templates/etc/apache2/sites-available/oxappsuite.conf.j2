@@ -208,7 +208,6 @@
 {% endfor %}
 {% for agent in apache2_dav_agent_strings_exclude %}
 	RewriteCond %{HTTP_USER_AGENT} "!{{ agent }}"
-
 {% endfor %}
 	RewriteRule (.*) http://localhost:8009/servlet/dav$1 [P]
 
