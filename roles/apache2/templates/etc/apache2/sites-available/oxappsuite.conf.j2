@@ -206,7 +206,10 @@
 	RewriteCond %{HTTP_USER_AGENT} "{{ agent }}" {% if not loop.last %}[OR]{% endif %}
 
 {% endfor %}
-	RewriteCond %{HTTP_USER_AGENT} "!Open-Xchange Calendar Feed Client"
+{% for agent in apache2_dav_agent_strings_exclude %}
+	RewriteCond %{HTTP_USER_AGENT} "!{{ agent }}"
+
+{% endfor %}
 	RewriteRule (.*) http://localhost:8009/servlet/dav$1 [P]
 
 	RewriteCond %{REQUEST_URI} ^/\.well-known/caldav   [OR]

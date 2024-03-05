@@ -86,3 +86,7 @@ apache2_dav_agent_strings:
   - OX Sync
   - CalDav
   - CoreDAV
+
+apache2_dav_agent_strings_exclude:
+  - Thunderbird ActiveSync
+  - Open-Xchange Calendar Feed Client
