@@ -1,0 +1,5 @@
+---
+
+mobileapifacade_package_list:
+  - open-xchange-mobile-api-facade
+  - open-xchange-pns-mobile-api-facade
