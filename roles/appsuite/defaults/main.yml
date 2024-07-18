@@ -172,6 +172,7 @@ appsuite_calendar_xctx2_enabled: false
 appsuite_calendar_birthdays_enabled: true
 
 appsuite_default_permissions: []
+appsuite_attachment_max_upload_size: 10485760
 appsuite_quota_calendar: 250000
 appsuite_quota_task: 250000
 appsuite_quota_contact: 250000
@@ -182,6 +183,7 @@ appsuite_quota_invite_guests: 100
 appsuite_carddav_ignore_folders: []
 appsuite_share_static_guest_capabilities: []
 appsuite_share_guest_hostname: "{{ appsuite_object_link_hostname }}"
+appsuite_adminuser_bypass_access_combination_checks: false
 appsuite_adminuser_username_changeable: false
 appsuite_adminuser_allow_changing_quota_if_no_filestore_set: false
 appsuite_foldercache_enable_internal_user_edit: true

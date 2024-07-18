@@ -1,5 +1,11 @@
 {{ ansible_managed | comment }}
 
+# Allows to bypass particular access combination checks during provisioning. If set to true, the
+# permissions editpublicfolders, readcreatesharedfolders, delegatetask and webdavxml will be possible
+# in combination with globaladdressbookdisabled being set. Can be specified through the config-cascade,
+# up to scope 'context' after the context has been created.
+com.openexchange.admin.bypassAccessCombinationChecks={{ appsuite_adminuser_bypass_access_combination_checks | ternary('true', 'false') }}
+
 # specify the default password mechanism to use
 # possible values: CRYPT / SHA / SHA-256 / SHA-512 / BCRYPT
 DEFAULT_PASSWORD_MECHANISM=SHA-256

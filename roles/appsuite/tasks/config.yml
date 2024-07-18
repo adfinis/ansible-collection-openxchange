@@ -62,6 +62,7 @@
     - folder.properties
     - quota.properties
     - share.properties
+    - attachment.properties
     - calendar.properties
     - carddav.properties
     - subscribe.properties

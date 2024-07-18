@@ -1,5 +1,8 @@
 ---
 
+- name: Load versions-specific vars
+  ansible.builtin.include_vars: "ox_{{ appsuite_version }}.yml"
+
 - name: Add apt repositories for Open-Xchange Mobile API Facade components
   ansible.builtin.apt_repository:
     repo: "{{ item }}"
@@ -8,8 +11,6 @@
 
 - name: Install Mobile API Facade packages
   ansible.builtin.apt:
-    name:
-      - open-xchange-mobile-api-facade
-      - open-xchange-pns-mobile-api-facade
+    name: "{{ mobileapifacade_package_list }}"
   notify:
     - Restart Open-Xchange
