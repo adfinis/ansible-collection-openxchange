@@ -118,6 +118,7 @@ appsuite_master_user: oxadminmaster
 
 appsuite_filestore_path: file:///var/opt/filestore
 
+appsuite_minimum_search_characters: 0
 
 appsuite_max_upload_size: 104857600
 appsuite_max_body_size: 104857600
