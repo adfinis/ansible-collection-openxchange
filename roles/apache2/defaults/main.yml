@@ -10,6 +10,7 @@ apache2_ox_modules:
   - setenvif
   - proxy
   - proxy_http
+  - proxy_wstunnel
   - proxy_balancer
   - lbmethod_byrequests
 apache2_additional_modules: []
@@ -33,6 +34,7 @@ apache2_balancer_hostgroup: null
 apache2_balancer_member_jkroute: "{{ appsuite_jkroute }}"
 apache2_balancer_member_host: "http://{{ ansible_facts.default_ipv4.address }}:8009"
 apache2_balancer_local_host: "http://localhost:8009"
+apache2_websockets_enabled: true
 
 apache2_documentconverter_enabled: false
 apache2_documentconverter_balancer_hostgroup: "{{ apache2_balancer_hostgroup }}"
