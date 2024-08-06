@@ -61,7 +61,27 @@
 	      SetEnv proxy-initial-not-pooled
 	      SetEnv proxy-sendchunked
 	   </Proxy>
-	
+
+{% if apache2_websockets_enabled %}
+	   <Proxy balancer://oxcluster_ws>
+	       Order deny,allow
+	       Allow from all
+	       # multiple server setups need to have the hostname inserted instead localhost
+{% if apache2_balancer_hostgroup is none %}
+	       BalancerMember {{ apache2_balancer_local_host }} timeout=100 smax=0 ttl=60 retry=60 loadfactor=50 route={{ apache2_balancer_member_jkroute }}
+{% else %}
+{% for name in groups[apache2_balancer_hostgroup] %}
+	       BalancerMember {{ hostvars[name].apache2_balancer_member_host }} timeout=100 smax=0 ttl=60 retry=60 loadfactor=50 route={{ hostvars[name].apache2_balancer_member_jkroute }}
+{% endfor %}
+{% endif %}
+	       # Enable and maybe add additional hosts running OX here
+	       # BalancerMember http://oxhost2:8009 timeout=100 smax=0 ttl=60 retry=60 loadfactor=50 route=APP2
+	      ProxySet stickysession=JSESSIONID|jsessionid scolonpathdelim=On
+	      SetEnv proxy-initial-not-pooled
+	      SetEnv proxy-sendchunked
+	   </Proxy>
+{% endif %}
+
 {% if apache2_documentconverter_enabled %}
 	   # The standalone documentconverter(s) within your setup (if installed)
 	   # Make sure to restrict access to backends only
@@ -153,6 +173,10 @@
 	  ProxyPass /realtime balancer://oxcluster/realtime
 	  ProxyPass /servlet balancer://oxcluster/servlet
 	  ProxyPass /webservices balancer://oxcluster/webservices
+
+{% if apache2_websockets_enabled %}
+	  ProxyPass /socket.io balancer://oxcluster_ws/socket.io
+{% endif %}
 
 {% if apache2_documentconverter_enabled %}
 	  ProxyPass /documentconverterws balancer://oxcluster_docs/documentconverterws
