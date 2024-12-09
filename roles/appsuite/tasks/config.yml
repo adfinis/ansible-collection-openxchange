@@ -58,6 +58,7 @@
     - secrets
     - licensekeys.properties
     - AdminUser.properties
+    - findbasic.properties
     - foldercache.properties
     - folder.properties
     - quota.properties
