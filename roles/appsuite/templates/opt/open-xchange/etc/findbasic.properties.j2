@@ -6,7 +6,7 @@
 #
 # Set the value to the name of the virtual mail folder containing all messages.
 # Leave blank if no such folder exists.
-com.openexchange.find.basic.mail.allMessagesFolder = Virtual/All
+com.openexchange.find.basic.mail.allMessagesFolder = {{ appsuite_findbasic_all_messages_folder }}
 
 # Denotes if mail search queries should be matched against mail bodies.
 # This improves the search experience within the mail module, if your mail
@@ -15,4 +15,4 @@ com.openexchange.find.basic.mail.allMessagesFolder = Virtual/All
 #
 # Change the value to 'true', if fast full text search is supported. Default
 # is 'false'.
-com.openexchange.find.basic.mail.searchmailbody = true
+com.openexchange.find.basic.mail.searchmailbody = {{ appsuite_findbasic_allow_fast_full_text_search | ternary ('true', 'false') }}
