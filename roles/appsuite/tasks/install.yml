@@ -18,10 +18,12 @@
     owner: root
     group: root
     mode: "0644"
+  when: "ansible_facts.distribution_major_version|int < 12"
 
 - name: "Install equivs package 'adoptopenjdk-8-hotspot-jre' that aliases the dependency to 'temurin-8-jdk'"
   ansible.builtin.apt:
     deb: /root/adoptopenjdk-8-hotspot-jre_1.0_all.deb
+  when: "ansible_facts.distribution_major_version|int < 12"
 
 - name: Add apt repository key for Open-Xchange
   ansible.builtin.apt_key:

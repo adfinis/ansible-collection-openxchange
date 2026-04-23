@@ -9,7 +9,7 @@ Deploy [OX App Suite](https://www.open-xchange.com/products/ox-app-suite/) and s
 
 ## Requirements
 
-- This collection is designed to work with Debian 10 or later.
+- This collection is designed to work with Debian 10 to 12.
     - The exact version of Debian that will work depends on the version of OX App Suite being deployed.
 - A MySQL/MariaDB server or Galera cluster must be provided and be reachable from both the Ansible machine and its targets.
     - OX App Suite requires multiple schemas (databases) within the database server.  This collection can take care of creating them.
