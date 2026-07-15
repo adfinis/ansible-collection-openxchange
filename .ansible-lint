@@ -8,3 +8,7 @@ skip_list:
   - name[casing]
   - yaml[comments-indentation]
   - var-naming[no-role-prefix]
+
+exclude_paths:
+  - .cache/  # implicit unless exclude_paths is defined in config
+  - .github/
